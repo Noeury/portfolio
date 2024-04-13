@@ -1,0 +1,50 @@
+---
+const personalImageAlt = "Noeury Feliz";
+import Badge from "@/components/Badge.astro";
+import LinkedInIcon from "@/components/icons/LinkedIn.astro";
+import MailIcon from "@/components/icons/Mail.astro";
+import SocialPill from "@/components/SocialPill.astro";
+---
+
+<div class="max-w-xl">
+  <div class="flex gap-4 mb-4">
+    <img
+      class="rounded-full shadow-lg size-16"
+      src="/Logo.png"
+      alt={personalImageAlt}
+    />
+    <a
+      href="https://www.linkedin.com/in/noeury-nizael-feliz-feliz-32506ab7/"
+      target="_blank"
+      rel="noopener"
+      class="flex items-center transition md:justify-center md:hover:scale-105"
+    >
+      <Badge>Ready to work</Badge>
+    </a>
+  </div>
+  <h1
+    class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
+  >
+    Hola, mi nombre es Noeury
+  </h1>
+  <p
+    class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-blue-400 [&>strong]:text-blue-700 [&>strong]:font-semibold dark:text-gray-300"
+  >
+    +5 años de experiencia. <strong
+      >Ingeniero En Sistemas, profesor de matematicas y ex profesor de ingles</strong
+    > de Barahona, Republica Dominicana do. Actualmente me dedico al desarrollo de
+    aplicaciones web.
+  </p>
+  <nav class="flex flex-wrap gap-4 mt-8">
+    <SocialPill href="mailto:noeuryfeliz@gmail.com">
+      <MailIcon class="size-4" />
+      Contáctame
+    </SocialPill>
+    <SocialPill
+      href="https://www.linkedin.com/in/noeury-nizael-feliz-feliz-32506ab7/"
+    >
+      <LinkedInIcon class="size-4" />
+      LinkedIn
+    </SocialPill>
+  </nav>
+</div>

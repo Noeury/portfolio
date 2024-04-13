@@ -1,0 +1,31 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+const EXPERIENCIE = [
+  {
+    date: "Ahora",
+    title: "Múltiples  proyectos",
+    company: "Freelancer",
+    description:
+      "Actualmente me encuentro desarrollando proyectos de manera freelance",
+    link: "https://github.com/Noeury",
+  },
+  {
+    date: "Semtiembre 2023",
+    title: "Backend Leader",
+    company: "UCATEBA",
+    description:
+      "Encargado de liderar el equipo de desarrollo backend, asumiendo el rol de Scrum Master con las responsabilidades que este implica, además de la implementación de soluciones de software y bases de datos.",
+    link: "https://nivelup.netlify.app/",
+  },
+];
+---
+
+<ol class="relative mt-16">
+  {
+    EXPERIENCIE.map((experiencie) => (
+      <li class="">
+        <ExperienceItem {...experiencie} />
+      </li>
+    ))
+  }
+</ol>
