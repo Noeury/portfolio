@@ -4,6 +4,7 @@ import Badge from "@/components/Badge.astro";
 import LinkedInIcon from "@/components/icons/LinkedIn.astro";
 import MailIcon from "@/components/icons/Mail.astro";
 import SocialPill from "@/components/SocialPill.astro";
+import { Trans } from "astro-i18next/components";
 ---
 
 <div class="max-w-xl">
@@ -25,20 +26,22 @@ import SocialPill from "@/components/SocialPill.astro";
   <h1
     class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
   >
-    Hola, mi nombre es Noeury
+    <Trans i18nKey="hero.intro"> Hola, mi nombre es Noeury </Trans>
   </h1>
   <p
     class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-blue-400 [&>strong]:text-blue-700 [&>strong]:font-semibold dark:text-gray-300"
   >
-    +5 años de experiencia. <strong
-      >Ingeniero En Sistemas, profesor de matematicas y ex profesor de inglés</strong
-    > de Barahona, República Dominicana do. Actualmente me dedico al desarrollo de
-    aplicaciones web.
+    <Trans i18nKey="hero.paragraph1">
+      +5 años de experiencia. <strong
+        >Ingeniero En Sistemas, profesor de matematicas y ex profesor de inglés</strong
+      > de Barahona, República Dominicana do. Actualmente me dedico al desarrollo
+      de aplicaciones web.
+    </Trans>
   </p>
   <nav class="flex flex-wrap gap-4 mt-8">
     <SocialPill href="mailto:noeuryfeliz@gmail.com">
       <MailIcon class="size-4" />
-      Contáctame
+      <Trans i18nKey="header.contactme.title"> Contáctame </Trans>
     </SocialPill>
     <SocialPill
       href="https://www.linkedin.com/in/noeury-nizael-feliz-feliz-32506ab7/"

@@ -1,0 +1,31 @@
+---
+import { changeLanguage } from "i18next";
+import EnIcon from "./icons/EN.astro";
+import EsIcon from "./icons/ES.astro";
+import FrIcon from "./icons/FR.astro";
+changeLanguage("en");
+---
+
+<div class="flex">
+    <button
+        class="relative block px-2 py-2"
+        onclick="changeLanguage('en')"
+        aria-label="English"
+    >
+        <EnIcon id="En" class="size-5" />
+    </button>
+    <button
+        class="relative block px-2 py-2"
+        onclick="changeLanguage('fr')"
+        aria-label="French"
+    >
+        <FrIcon id="Fr" class="size-5" />
+    </button>
+    <button
+        class="relative block px-2 py-2"
+        onclick="changeLanguage('es')"
+        aria-label="Spanish"
+    >
+        <EsIcon id="Es" class="size-5" />
+    </button>
+</div>

@@ -1,0 +1,52 @@
+---
+import { getLangIcon } from "@/Scripts/GetLanguageIcon";
+import i18next from "i18next";
+import ISO6991 from "iso-639-1";
+import { localizePath } from "../../node_modules/astro-i18next";
+
+interface languageMapping {
+    [localeCode: string]: string;
+}
+
+export interface Props extends astroHTML.JSX.SelectHTMLAttributes {
+    showFlag?: boolean;
+    languageMapping?: languageMapping;
+}
+
+const supportedLanguages = i18next.languages;
+const currentLanguage = i18next.language;
+
+const { pathname } = Astro.url;
+
+const { showFlag = false, languageMapping, ...attributes } = Astro.props;
+---
+
+<select onchange="location = this.value;" {...attributes}>
+    {
+        supportedLanguages.map((supportedLanguage: string) => {
+            let value = localizePath(pathname, supportedLanguage);
+            const flag = showFlag ? getLangIcon(supportedLanguage) + " " : "";
+            console.log(getLangIcon(supportedLanguage));
+            let nativeName = "";
+            if (
+                languageMapping &&
+                languageMapping.hasOwnProperty(supportedLanguage)
+            ) {
+                nativeName = languageMapping[supportedLanguage];
+            } else {
+                nativeName = ISO6991.getNativeName(supportedLanguage);
+            }
+
+            const label = nativeName;
+
+            return (
+                <option
+                    value={value}
+                    selected={supportedLanguage === currentLanguage}
+                >
+                    {label}
+                </option>
+            );
+        })
+    }
+</select>

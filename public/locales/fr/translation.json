@@ -1,0 +1,74 @@
+{
+    "title": "Portfolio de Noeury - Ingénieur en systèmes",
+    "description": "Contactez Noeury Feliz et commencez un voyage unique ensemble !",
+    "instructions": "Consultez le répertoire <0>src/pages</0> pour commencer.<1><2>Défi de code :</2> Traduisez cette page dans la langue de votre choix.",
+    "header": {
+        "experience": {
+            "title": "Expérience",
+            "label": "experience",
+            "url": "/#experience"
+        },
+        "projects": {
+            "title": "Projets",
+            "label": "projets",
+            "url": "/#projets"
+        },
+        "aboutme": {
+            "title": "À propos de moi",
+            "label": "a-propos-de-moi",
+            "url": "/#a-propos-de-moi"
+        },
+        "contactme": {
+            "title": "Contactez-moi",
+            "label": "contact"
+        }
+    },
+    "sectionTitles": {
+        "experience": "Expérience professionnelle",
+        "projects": "Projets",
+        "about": "À propos de moi"
+    },
+    "AboutMe": {
+        "paragraph1": "Je m'appelle Noeury Feliz, mais mes amis m'appellent simplement Noeury. Mon aventure en programmation a commencé à l'âge de 15 ans alors que j'étais au lycée. Mon premier langage à l'époque était C#. Au fil des ans, j'ai appris diverses technologies et j'ai même <strong>dirigé des équipes à certaines occasions</strong>.",
+        "paragraph2": "Une de mes réalisations remarquables a été de participer à la compétition d'innovation du Mescyt, où j'ai présenté des projets ayant un impact significatif.",
+        "paragraph3": "Je travaille actuellement sur certains projets pour l'Universidad Católica Tecnológica de Barahona <strong>UCATEBA</strong>, où j'ai occupé le poste de SCRUM Master et chef d'équipe."
+    },
+    "experience": {
+        "exp1": {
+            "date": "Maintenant",
+            "title": "Multiples projets",
+            "company": "Freelancer",
+            "description": "Je développe actuellement des projets en tant que freelance."
+        },
+        "exp2": {
+            "date": "Septembre 2023",
+            "title": "Leader Backend",
+            "company": "UCATEBA",
+            "description": "Responsable de diriger l'équipe de développement backend, assumant le rôle de Scrum Master avec ses responsabilités associées, ainsi que la mise en œuvre de solutions logicielles et de bases de données."
+        },
+        "knowMore": "Voir plus"
+    },
+    "footer": {
+        "contact": "Contactez-moi"
+    },
+    "hero": {
+        "intro": "Bonjour, je m'appelle Noeury.",
+        "paragraph1": "+5 ans d'expérience. <strong>Ingénieur en systèmes, professeur de mathématiques et ancien professeur d'anglais</strong> de Barahona, République dominicaine. Actuellement dédié au développement d'applications web."
+    },
+    "projects": {
+        "nivelup": {
+            "description": "Une application pour le nivellement des étudiants à l'Université. Ce système constitue une plateforme de gestion académique complète."
+        },
+        "jen": {
+            "description": "Plateforme de gestion financière et de produits pour les entreprises avec des fonctionnalités telles que le point de vente, les rapports, la gestion des paiements et des crédits."
+        }
+    },
+    "index": {
+        "title": "Projets",
+        "experience": "Expérience de travail",
+        "about": "À propos de moi"
+    },
+    "component": {
+        "ready": "Prêt à Travailler"
+    }
+}

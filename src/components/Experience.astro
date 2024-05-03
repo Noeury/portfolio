@@ -1,20 +1,20 @@
 ---
 import ExperienceItem from "./ExperienceItem.astro";
+import i18next, { changeLanguage, t } from "i18next";
+
 const EXPERIENCIE = [
   {
-    date: "Ahora",
-    title: "Múltiples proyectos",
-    company: "Freelancer",
-    description:
-      "Actualmente me encuentro desarrollando proyectos de manera freelance",
+    date: t("experience.exp1.date"),
+    title: t("experience.exp1.title"),
+    company: t("experience.exp1.company"),
+    description: t("experience.exp1.description"),
     link: "https://github.com/Noeury",
   },
   {
-    date: "Septiembre 2023",
-    title: "Backend Leader",
-    company: "UCATEBA",
-    description:
-      "Encargado de liderar el equipo de desarrollo backend, asumiendo el rol de Scrum Master con las responsabilidades que este implica, además de la implementación de soluciones de software y bases de datos.",
+    date: t("experience.exp2.date"),
+    title: t("experience.exp2.title"),
+    company: t("experience.exp2.company"),
+    description: t("experience.exp2.description"),
     link: "https://nivelup.netlify.app/",
   },
 ];

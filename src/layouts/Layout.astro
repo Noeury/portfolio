@@ -1,9 +1,12 @@
 ---
 import "@fontsource-variable/onest";
 
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import { ViewTransitions } from "astro:transitions";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+
+import { HeadHrefLangs } from "astro-i18next/components";
+import i18next from "i18next";
 
 interface Props {
   title: string;
@@ -14,7 +17,7 @@ const { description, title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={i18next.language}>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -23,6 +26,7 @@ const { description, title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ViewTransitions />
+    <HeadHrefLangs />
   </head>
 
   <body class="relative text-black dark:text-white">

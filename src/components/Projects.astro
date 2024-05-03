@@ -8,17 +8,17 @@ import MySQL from "./icons/Mysql.astro";
 
 import Express from "./icons/Expressjs.astro";
 
-import Nodejs from "./icons/Nodejs.astro";
-import Mongo from "./icons/Mongodb.astro";
-import Nest from "./icons/Nestjs.astro";
 import CSharp from "./icons/Csharp.astro";
 import Electron from "./icons/Electron.astro";
+import Mongo from "./icons/Mongodb.astro";
+import Nest from "./icons/Nestjs.astro";
+import Nodejs from "./icons/Nodejs.astro";
 import Prisma from "./icons/Prisma.astro";
 
-import Tailwind from "./icons/Tailwind.astro";
 import Link from "./icons/Link.astro";
+import Tailwind from "./icons/Tailwind.astro";
 import LinkButton from "./LinkButton.astro";
-import { table } from "node_modules/astro/dist/core/logger/core";
+import { changeLanguage, t } from "i18next";
 
 const TAGS = {
   NEXT: {
@@ -85,8 +85,7 @@ const TAGS = {
 const PROJECTS = [
   {
     title: "NivelUp",
-    description:
-      "Una aplicación para la nivelación de estudiantes en la Universidad. Este sistema constituye una plataforma integral de gestión académica.",
+    description: t("projects.nivelup.description"),
     link: "https://nivelup.netlify.app/",
     github: "https://github.com/Noeury",
     image: "/projects/nivelup.jpeg",
@@ -94,8 +93,7 @@ const PROJECTS = [
   },
   {
     title: "JEN",
-    description:
-      "Plataforma de gestión financiera y productos para negocios con funcionalidades como punto de ventas, reportes, manejo de pagos y créditos",
+    description: t("projects.jen.description"),
     link: "https://github.com/Noeury",
     image: "/projects/jen.png",
     tags: [
