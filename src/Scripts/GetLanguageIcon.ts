@@ -11,27 +11,29 @@ const iconMapping: IconMapping = {
     fr: FrIcon
 };
 
-var defaults = {
+const defaults: { [key: string]: string } = {
     fr: 'FR',
     en: 'US',
     es: 'ES',
 };
 
-
 export const getLangIcon = (locale: string) => {
-    var split = locale.toUpperCase().split(/-|_/);
-    var lang = split.shift();
-    var code = split.pop();
+    const split = locale.toUpperCase().split(/-|_/);
+    let lang = split.shift();
+    const code = split.pop();
 
-    if (!/^[A-Z]{2}$/.test(code)) {
-        code = defaults[lang.toLowerCase()];
-    }
-
-    if (!code) {
+    if (!lang) {
         return '';
     }
+
+    if (!code || !/^[A-Z]{2}$/.test(code)) {
+        lang = defaults[lang.toLowerCase()];
+    }
+
+    if (!lang) {
+        return '';
+    }
+
     const iconComponent = iconMapping[lang.toLowerCase()];
     return iconComponent ? iconComponent : null;
 }
-
-
