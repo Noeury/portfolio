@@ -1,0 +1,224 @@
+---
+import { Trans } from "astro-i18next/components";
+import { t } from "i18next";
+
+// Import tech icon components
+import AngularIcon from "../icons/Angular.astro";
+import ReactIcon from "../icons/React.astro";
+import NextJSIcon from "../icons/NextJS.astro";
+import NodejsIcon from "../icons/Nodejs.astro";
+import ExpressjsIcon from "../icons/Expressjs.astro";
+import NestjsIcon from "../icons/Nestjs.astro";
+import MongodbIcon from "../icons/Mongodb.astro";
+import MysqlIcon from "../icons/Mysql.astro";
+import TailwindIcon from "../icons/Tailwind.astro";
+import CsharpIcon from "../icons/Csharp.astro";
+import PrismaIcon from "../icons/Prisma.astro";
+
+// Define skills and tools with categories
+const skills = [
+  {
+    category: "Frontend",
+    items: [
+      { name: "React", icon: ReactIcon, level: 90 },
+      { name: "Angular", icon: AngularIcon, level: 85 },
+      { name: "Next.js", icon: NextJSIcon, level: 80 },
+      { name: "Tailwind CSS", icon: TailwindIcon, level: 95 },
+    ]
+  },
+  {
+    category: "Backend",
+    items: [
+      { name: "Node.js", icon: NodejsIcon, level: 90 },
+      { name: "Express.js", icon: ExpressjsIcon, level: 85 },
+      { name: "NestJS", icon: NestjsIcon, level: 75 },
+      { name: "C#", icon: CsharpIcon, level: 70 },
+    ]
+  },
+  {
+    category: "Database",
+    items: [
+      { name: "MongoDB", icon: MongodbIcon, level: 85 },
+      { name: "MySQL", icon: MysqlIcon, level: 90 },
+      { name: "Prisma ORM", icon: PrismaIcon, level: 80 },
+    ]
+  }
+];
+
+// Define certifications - can be updated with actual certifications
+const certifications = [
+  {
+    name: "SCRUM Master",
+    issuer: "UCATEBA",
+    year: "2023",
+    icon: "🏆"
+  },
+];
+
+// Define languages
+const languages = [
+  { name: "Spanish", level: "Native", proficiency: 100 },
+  { name: "English", level: "Professional", proficiency: 90 },
+];
+---
+
+<section id="validation" class="pipeline-section min-h-screen py-24">
+  <div class="container mx-auto">
+    <div class="mb-12">
+      <span class="pipeline-badge bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-medium px-2.5 py-0.5 rounded">
+        02 <Trans i18nKey="pipeline.stages.validation">Validation</Trans>
+      </span>
+      <h2 class="pipeline-section-title mt-2">
+        <span class="pipeline-icon-wrapper inline-block mr-3 bg-green-100 dark:bg-green-900 p-2 rounded-full">
+          <span class="text-2xl">✓</span>
+        </span>
+        <Trans i18nKey="pipeline.sections.validation.title">Data Validation</Trans>
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+        <Trans i18nKey="pipeline.sections.validation.subtitle">Skills & Tools</Trans>
+      </p>
+      <p class="text-gray-600 dark:text-gray-400 max-w-3xl">
+        <Trans i18nKey="pipeline.sections.validation.description">
+          Like validating data for quality, here are the professional skills and tools I've refined.
+        </Trans>
+      </p>
+    </div>
+
+    <!-- Skills visualization with pipeline-style gauge bars -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+      {skills.map((skillCategory) => (
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-green-200 dark:from-green-900 opacity-20 rounded-bl-full"></div>
+          
+          <h3 class="text-xl font-bold mb-4 text-green-700 dark:text-green-400 flex items-center">
+            {skillCategory.category === "Frontend" && <span class="mr-2">🖥️</span>}
+            {skillCategory.category === "Backend" && <span class="mr-2">⚙️</span>}
+            {skillCategory.category === "Database" && <span class="mr-2">💾</span>}
+            {skillCategory.category}
+          </h3>
+          
+          <div class="space-y-4">
+            {skillCategory.items.map((skill) => (
+              <div>
+                <div class="flex items-center mb-1">
+                  <skill.icon class="size-5 mr-2" />
+                  <span class="font-medium">{skill.name}</span>
+                  <span class="ml-auto text-sm text-gray-500 dark:text-gray-400">{skill.level}%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 overflow-hidden">
+                  <div 
+                    class="h-2.5 rounded-full bg-gradient-to-r from-green-500 to-blue-500" 
+                    style={`width: ${skill.level}%`}
+                  >
+                    <!-- Small data nodes along the progress bar -->
+                    <div class="data-node" style={`left: 25%`}></div>
+                    <div class="data-node" style={`left: 50%`}></div>
+                    <div class="data-node" style={`left: 75%`}></div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Certifications and Languages in a grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Certifications -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700">
+        <h3 class="text-xl font-bold mb-4 text-green-700 dark:text-green-400 flex items-center">
+          <span class="mr-2">🏆</span>
+          <Trans i18nKey="pipeline.sections.validation.certifications">Certifications</Trans>
+        </h3>
+        
+        {certifications.length > 0 ? (
+          <ul class="space-y-3">
+            {certifications.map((cert) => (
+              <li class="flex items-start">
+                <span class="text-2xl mr-3">{cert.icon}</span>
+                <div>
+                  <p class="font-medium">{cert.name}</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">{cert.issuer} • {cert.year}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div class="text-center py-8 text-gray-500 dark:text-gray-400">
+            <p>Certifications coming soon...</p>
+          </div>
+        )}
+      </div>
+
+      <!-- Languages -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700">
+        <h3 class="text-xl font-bold mb-4 text-green-700 dark:text-green-400 flex items-center">
+          <span class="mr-2">🌐</span>
+          <Trans i18nKey="pipeline.sections.validation.languages">Languages</Trans>
+        </h3>
+        
+        <ul class="space-y-4">
+          {languages.map((language) => (
+            <li>
+              <div class="flex justify-between mb-1">
+                <span class="font-medium">{language.name}</span>
+                <span class="text-sm text-gray-500 dark:text-gray-400">{language.level}</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                <div 
+                  class="h-2.5 rounded-full bg-gradient-to-r from-green-500 to-blue-500"
+                  style={`width: ${language.proficiency}%`}
+                ></div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Navigation to next stage -->
+    <div class="mt-12 flex justify-center">
+      <a
+        href="#transformation"
+        class="pipeline-next-stage inline-flex items-center px-5 py-3 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none transition-transform hover:translate-y-1"
+      >
+        <span class="mr-2">Next Stage:</span> Transformation
+        <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .data-node {
+    @apply absolute top-0 w-1.5 h-1.5 bg-white rounded-full transform -translate-y-1/4;
+  }
+  
+  .pipeline-next-stage {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .pipeline-next-stage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: 0.5s;
+  }
+  
+  .pipeline-next-stage:hover::before {
+    left: 100%;
+  }
+</style>

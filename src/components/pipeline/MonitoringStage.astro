@@ -1,0 +1,477 @@
+---
+import { Trans } from "astro-i18next/components";
+import { t } from "i18next";
+
+// Metrics data - you can update with your actual metrics
+const metrics = [
+  { 
+    name: "Projects Completed", 
+    value: "20+", 
+    icon: "📊",
+    color: "blue",
+    growth: "+25% from last year" 
+  },
+  { 
+    name: "Languages & Technologies", 
+    value: "15+", 
+    icon: "🧰",
+    color: "green",
+    growth: "Constantly expanding" 
+  },
+  { 
+    name: "Client Satisfaction", 
+    value: "98%", 
+    icon: "😊",
+    color: "yellow",
+    growth: "Based on feedback" 
+  },
+  { 
+    name: "Code Quality", 
+    value: "A+", 
+    icon: "✓",
+    color: "purple",
+    growth: "Maintained through tests" 
+  }
+];
+
+// Testimonial data - you can update with actual testimonials
+const testimonials = [
+  {
+    name: "John Doe",
+    role: "Project Manager at UCATEBA",
+    avatar: "https://i.pravatar.cc/150?img=1", // Placeholder avatar
+    content: "Noeury has been an exceptional team leader and developer. His technical expertise and ability to manage complex projects has been invaluable to our organization.",
+    rating: 5
+  },
+  {
+    name: "Jane Smith",
+    role: "Frontend Developer",
+    avatar: "https://i.pravatar.cc/150?img=2", // Placeholder avatar
+    content: "Working with Noeury has been a great learning experience. His knowledge of backend systems and data pipelines helped us deliver robust solutions.",
+    rating: 5
+  }
+];
+
+// GitHub activity (simulated) - you could integrate with GitHub API for real data
+const githubActivity = [
+  {
+    type: "commit",
+    repo: "data-pipeline-project",
+    message: "Implemented real-time data processing module",
+    date: "2 days ago"
+  },
+  {
+    type: "pull-request",
+    repo: "analytics-dashboard",
+    message: "Added new visualization components",
+    date: "1 week ago"
+  },
+  {
+    type: "issue-closed",
+    repo: "student-management-system",
+    message: "Fixed data validation in registration flow",
+    date: "2 weeks ago"
+  },
+  {
+    type: "release",
+    repo: "financial-reporting-app",
+    message: "v1.2.0 with new reporting features",
+    date: "3 weeks ago"
+  }
+];
+---
+
+<section id="monitoring" class="pipeline-section min-h-screen py-24">
+  <div class="container mx-auto">
+    <div class="mb-12">
+      <span class="pipeline-badge bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-medium px-2.5 py-0.5 rounded">
+        06 <Trans i18nKey="pipeline.stages.monitoring">Monitoring</Trans>
+      </span>
+      <h2 class="pipeline-section-title mt-2">
+        <span class="pipeline-icon-wrapper inline-block mr-3 bg-green-100 dark:bg-green-900 p-2 rounded-full">
+          <span class="text-2xl">📊</span>
+        </span>
+        <Trans i18nKey="pipeline.sections.monitoring.title">Data Monitoring</Trans>
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+        <Trans i18nKey="pipeline.sections.monitoring.subtitle">Metrics & Testimonials</Trans>
+      </p>
+      <p class="text-gray-600 dark:text-gray-400 max-w-3xl">
+        <Trans i18nKey="pipeline.sections.monitoring.description">
+          Just as we monitor pipeline performance, here's feedback on my professional contributions.
+        </Trans>
+      </p>
+    </div>
+
+    <!-- Performance Metrics Dashboard -->
+    <div class="mb-16">
+      <h3 class="text-xl font-bold mb-6 text-green-700 dark:text-green-400 flex items-center">
+        <span class="mr-2">📈</span>
+        <Trans i18nKey="pipeline.sections.monitoring.metrics">Performance Metrics</Trans>
+      </h3>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {metrics.map((metric) => (
+          <div class={`metric-card bg-white dark:bg-gray-800 rounded-lg shadow-md border-t-4 border-${metric.color}-500 p-6`}>
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-1">{metric.name}</p>
+                <h4 class="text-3xl font-bold">{metric.value}</h4>
+                <p class="text-xs text-green-600 dark:text-green-400 mt-1">{metric.growth}</p>
+              </div>
+              <span class="text-3xl">{metric.icon}</span>
+            </div>
+            
+            <div class="mt-4">
+              <div class="w-full bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+                <div class={`h-1.5 rounded-full bg-${metric.color}-500 w-full`}></div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    
+    <!-- Activity Monitor -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+      <!-- GitHub Activity Feed -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+        <h3 class="text-xl font-bold mb-6 text-green-700 dark:text-green-400 flex items-center">
+          <span class="mr-2">🔄</span>
+          <Trans i18nKey="pipeline.sections.monitoring.activity">GitHub Activity</Trans>
+        </h3>
+        
+        <div class="github-feed relative">
+          <!-- Terminal-like header -->
+          <div class="bg-gray-800 dark:bg-gray-900 text-white px-4 py-2 rounded-t-lg flex items-center">
+            <div class="flex space-x-1.5 mr-4">
+              <div class="w-3 h-3 rounded-full bg-red-500"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500"></div>
+            </div>
+            <span class="text-xs font-mono">github_activity.log</span>
+          </div>
+          
+          <!-- Activity log -->
+          <div class="github-log bg-gray-100 dark:bg-gray-900 p-4 rounded-b-lg font-mono text-sm overflow-y-auto h-64 space-y-3">
+            {githubActivity.map((activity) => (
+              <div class="log-entry flex items-start">
+                <div class="mr-3 mt-1">
+                  {activity.type === "commit" && <span class="text-green-600 dark:text-green-400">●</span>}
+                  {activity.type === "pull-request" && <span class="text-blue-600 dark:text-blue-400">⊕</span>}
+                  {activity.type === "issue-closed" && <span class="text-purple-600 dark:text-purple-400">✓</span>}
+                  {activity.type === "release" && <span class="text-yellow-600 dark:text-yellow-400">⚑</span>}
+                </div>
+                <div>
+                  <div class="flex text-xs text-gray-500 dark:text-gray-400 mb-1">
+                    <span class="font-bold text-gray-700 dark:text-gray-300 mr-2">{activity.repo}</span>
+                    <span>{activity.date}</span>
+                  </div>
+                  <p class="text-gray-800 dark:text-gray-200">{activity.message}</p>
+                </div>
+              </div>
+            ))}
+            
+            <!-- Blinking cursor -->
+            <div class="flex items-center">
+              <span class="text-gray-600 dark:text-gray-400">$</span>
+              <span class="cursor ml-2"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Testimonials -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+        <h3 class="text-xl font-bold mb-6 text-green-700 dark:text-green-400 flex items-center">
+          <span class="mr-2">💬</span>
+          <Trans i18nKey="pipeline.sections.monitoring.testimonials">Testimonials</Trans>
+        </h3>
+        
+        <div class="testimonials-slider space-y-6">
+          {testimonials.map((testimonial) => (
+            <div class="testimonial-card bg-gray-50 dark:bg-gray-700 rounded-lg p-6 relative">
+              <!-- Quote mark -->
+              <div class="absolute top-4 right-4 text-4xl text-gray-200 dark:text-gray-600 pointer-events-none">
+                "
+              </div>
+              
+              <div class="mb-4">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <span class={i < testimonial.rating ? "text-yellow-400" : "text-gray-300 dark:text-gray-600"}>★</span>
+                ))}
+              </div>
+              
+              <p class="text-gray-600 dark:text-gray-300 mb-6 relative z-10">"{testimonial.content}"</p>
+              
+              <div class="flex items-center">
+                <img 
+                  src={testimonial.avatar} 
+                  alt={testimonial.name} 
+                  class="w-10 h-10 rounded-full mr-4 border-2 border-green-200 dark:border-green-900"
+                />
+                <div>
+                  <h4 class="font-bold">{testimonial.name}</h4>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">{testimonial.role}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Real-time Monitoring Dashboard (simulated) -->
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-16">
+      <h3 class="text-xl font-bold mb-6 text-green-700 dark:text-green-400 flex items-center">
+        <span class="mr-2">📟</span>
+        <Trans i18nKey="pipeline.sections.monitoring.feedback">Performance Dashboard</Trans>
+      </h3>
+      
+      <div class="dashboard grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Chart 1: Line Chart (simulated) -->
+        <div class="dashboard-widget bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+          <h4 class="text-sm font-semibold mb-4">Project Completion Rate</h4>
+          <div class="chart-container h-40 flex items-end space-x-1">
+            {Array.from({ length: 12 }).map((_, i) => {
+              const height = 30 + Math.random() * 60;
+              return (
+                <div class="chart-bar bg-green-500 dark:bg-green-600" style={`height: ${height}%`}>
+                  <span class="sr-only">{height.toFixed(0)}%</span>
+                </div>
+              );
+            })}
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">
+            Last 12 months
+          </div>
+        </div>
+        
+        <!-- Chart 2: Pie Chart (simulated) -->
+        <div class="dashboard-widget bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+          <h4 class="text-sm font-semibold mb-4">Technology Distribution</h4>
+          <div class="flex justify-center">
+            <div class="pie-chart">
+              <div class="slice slice-1" style="--percentage: 35%;"></div>
+              <div class="slice slice-2" style="--percentage: 25%;"></div>
+              <div class="slice slice-3" style="--percentage: 20%;"></div>
+              <div class="slice slice-4" style="--percentage: 20%;"></div>
+            </div>
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-4 flex flex-wrap justify-center gap-2">
+            <span class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-1"></span>Frontend</span>
+            <span class="flex items-center"><span class="w-2 h-2 bg-purple-500 rounded-full mr-1"></span>Backend</span>
+            <span class="flex items-center"><span class="w-2 h-2 bg-yellow-500 rounded-full mr-1"></span>Database</span>
+            <span class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-1"></span>DevOps</span>
+          </div>
+        </div>
+        
+        <!-- Chart 3: Gauge Chart (simulated) -->
+        <div class="dashboard-widget bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+          <h4 class="text-sm font-semibold mb-4">Current Workload</h4>
+          <div class="flex justify-center items-center h-40">
+            <div class="gauge">
+              <div class="gauge-body">
+                <div class="gauge-fill"></div>
+                <div class="gauge-cover">75%</div>
+              </div>
+            </div>
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">
+            Capacity utilization
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation to next stage -->
+    <div class="mt-16 flex justify-center">
+      <a
+        href="#delivery"
+        class="pipeline-next-stage inline-flex items-center px-5 py-3 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none transition-transform hover:translate-y-1"
+      >
+        <span class="mr-2">Final Stage:</span> Delivery
+        <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .metric-card {
+    transition: all 0.3s ease;
+  }
+  
+  .metric-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .github-log .log-entry {
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .github-log .log-entry:nth-child(1) { animation-delay: 0.1s; }
+  .github-log .log-entry:nth-child(2) { animation-delay: 0.3s; }
+  .github-log .log-entry:nth-child(3) { animation-delay: 0.5s; }
+  .github-log .log-entry:nth-child(4) { animation-delay: 0.7s; }
+  
+  .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background-color: currentColor;
+    animation: blink 1s step-end infinite;
+  }
+  
+  @keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  
+  .chart-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 1px;
+  }
+  
+  .chart-bar {
+    flex-grow: 1;
+    transition: height 1s ease;
+  }
+  
+  /* Pie chart styling */
+  .pie-chart {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #e5e7eb;
+    overflow: hidden;
+  }
+  
+  .slice {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 50% 0%);
+    transform-origin: center;
+  }
+  
+  .slice-1 {
+    background-color: #3b82f6;
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 50% 0%);
+    transform: rotate(0deg);
+  }
+  
+  .slice-2 {
+    background-color: #8b5cf6;
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 50%, 50% 50%);
+    transform: rotate(calc(360deg * 0.35));
+  }
+  
+  .slice-3 {
+    background-color: #eab308;
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 50%, 50% 50%);
+    transform: rotate(calc(360deg * 0.6));
+  }
+  
+  .slice-4 {
+    background-color: #22c55e;
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 50%, 50% 50%);
+    transform: rotate(calc(360deg * 0.8));
+  }
+  
+  /* Gauge chart styling */
+  .gauge {
+    width: 100px;
+    height: 100px;
+    display: block;
+    padding: 10px;
+  }
+  
+  .gauge-body {
+    width: 100%;
+    height: 0;
+    padding-bottom: 50%;
+    background: #e5e7eb;
+    position: relative;
+    border-top-left-radius: 100% 200%;
+    border-top-right-radius: 100% 200%;
+    overflow: hidden;
+  }
+  
+  .gauge-fill {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: inherit;
+    height: 100%;
+    background: linear-gradient(to right, #22c55e, #eab308, #ef4444);
+    transform-origin: center top;
+    transform: rotate(0.75turn);
+    transition: transform 1s ease-out;
+  }
+  
+  .gauge-cover {
+    width: 75%;
+    height: 150%;
+    background: #f9fafb;
+    border-radius: 50%;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .gauge-cover {
+      background: #374151;
+    }
+  }
+  
+  .testimonial-card {
+    transition: all 0.3s ease;
+  }
+  
+  .testimonial-card:hover {
+    transform: scale(1.02);
+  }
+  
+  .pipeline-next-stage {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .pipeline-next-stage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: 0.5s;
+  }
+  
+  .pipeline-next-stage:hover::before {
+    left: 100%;
+  }
+</style>

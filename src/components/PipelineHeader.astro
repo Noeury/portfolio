@@ -1,0 +1,139 @@
+---
+import { t } from "i18next";
+import CustomLanguageSelector from "./CustomLanguageSelector.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+
+const pipelineStages = [
+  {
+    title: t("pipeline.stages.ingestion"),
+    label: "ingestion",
+    url: "#ingestion",
+  },
+  {
+    title: t("pipeline.stages.validation"),
+    label: "validation",
+    url: "#validation",
+  },
+  {
+    title: t("pipeline.stages.transformation"),
+    label: "transformation",
+    url: "#transformation",
+  },
+  {
+    title: t("pipeline.stages.storage"),
+    label: "storage",
+    url: "#storage",
+  },
+  {
+    title: t("pipeline.stages.orchestration"),
+    label: "orchestration",
+    url: "#orchestration",
+  },
+  {
+    title: t("pipeline.stages.monitoring"),
+    label: "monitoring",
+    url: "#monitoring",
+  },
+  {
+    title: t("pipeline.stages.delivery"),
+    label: "delivery",
+    url: "#delivery",
+  },
+];
+---
+
+<header
+  class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
+>
+  <nav
+    id="header-nav"
+    class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center overflow-x-auto max-w-full hide-scrollbar"
+  >
+    <div class="pipeline-progress-indicator pr-4 flex items-center gap-1 text-blue-600 dark:text-blue-400">
+      <span class="text-xs tracking-wider uppercase font-bold">Pipeline:</span>
+      <div class="h-2 w-2 rounded-full bg-blue-500 animate-pulse"></div>
+    </div>
+    
+    {
+      pipelineStages.map((stage) => (
+        <a
+          class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-400 whitespace-nowrap"
+          aria-label={stage.label}
+          href={stage.url}
+        >
+          {stage.title}
+        </a>
+      ))
+    }
+    <ThemeToggle />
+    <CustomLanguageSelector
+      showFlag={true}
+      class="bg-transparent text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-18 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    />
+  </nav>
+
+  <script>
+    document.addEventListener("astro:page-load", () => {
+      const sections = document.querySelectorAll("section");
+      const navItems = document.querySelectorAll("header nav a");
+
+      const callback = (entries: any[]) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            navItems.forEach((item) => {
+              if (item.getAttribute("aria-label") == entry.target.id) {
+                item.classList.add("text-blue-600", "border-b-2", "border-blue-500");
+              } else {
+                item.classList.remove("text-blue-600", "border-b-2", "border-blue-500");
+              }
+            });
+          }
+        });
+      };
+
+      const observer = new IntersectionObserver(callback, {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.3,
+      });
+
+      sections.forEach((section) => {
+        observer.observe(section);
+      });
+
+      // Cleanup function
+      document.onvisibilitychange = () => {
+        if (document.visibilityState === "hidden") {
+          observer.disconnect();
+        } else {
+          sections.forEach((section) => {
+            observer.observe(section);
+          });
+        }
+      };
+    });
+  </script>
+
+  <style>
+    nav {
+      animation: nav-shadown 1s linear both;
+      animation-timeline: scroll();
+      animation-range: 0 100px;
+    }
+
+    /* Hide scrollbar but keep functionality */
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    @keyframes nav-shadown {
+      to {
+        @apply shadow-lg ring-1 backdrop-blur dark:bg-gray-800/90 bg-white/50 ring-white/10;
+      }
+    }
+  </style>
+</header>
