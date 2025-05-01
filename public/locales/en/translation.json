@@ -72,6 +72,7 @@
         "ready": "Ready to Work"
     },
     "pipeline": {
+        "nextStagePrefix": "Next Stage:",
         "stages": {
             "ingestion": "Ingestion",
             "validation": "Validation",
@@ -121,9 +122,37 @@
                 "subtitle": "Resources & Repositories",
                 "description": "Like selecting the right database for your data, here's where you can access my professional resources.",
                 "resume": "Resume",
+                "resumeDescription": "My professional resume in PDF format.",
                 "github": "GitHub Repository",
+                "githubDescription": "Browse my code repositories and projects.",
                 "documentation": "Project Documentation",
-                "download": "Download"
+                "documentationDescription": "Technical documentation for selected projects.",
+                "download": "Download",
+                "schema": "Portfolio Schema",
+                "schemaTable": {
+                    "skills": "Skills",
+                    "projects": "Projects",
+                    "experience": "Experience",
+                    "idPK": "id (PK)",
+                    "name": "name",
+                    "category": "category",
+                    "proficiency": "proficiency",
+                    "yearsExperience": "years_experience",
+                    "title": "title",
+                    "description": "description",
+                    "imageUrl": "image_url",
+                    "githubUrl": "github_url",
+                    "liveUrl": "live_url",
+                    "position": "position",
+                    "company": "company",
+                    "startDate": "start_date",
+                    "endDate": "end_date"
+                },
+                "buttons": {
+                    "downloadResume": "Download Resume",
+                    "viewGithub": "View GitHub Profile",
+                    "viewDocumentation": "View Documentation"
+                }
             },
             "orchestration": {
                 "title": "Data Orchestration",

@@ -72,6 +72,7 @@
         "ready": "Listo para Trabajar"
     },
     "pipeline": {
+        "nextStagePrefix": "Siguiente Etapa:",
         "stages": {
             "ingestion": "Ingesta",
             "validation": "Validación",
@@ -114,7 +115,16 @@
                 "technologies": "Tecnologías Utilizadas",
                 "challenges": "Desafíos",
                 "solutions": "Soluciones",
-                "results": "Resultados"
+                "results": "Resultados",
+                "flow": {
+                    "input": "Entrada",
+                    "transform": "Transformar",
+                    "output": "Salida"
+                },
+                "buttons": {
+                    "code": "Código",
+                    "preview": "Vista Previa"
+                }
             },
             "storage": {
                 "title": "Almacenamiento de Datos",
@@ -123,7 +133,32 @@
                 "resume": "Currículum",
                 "github": "Repositorio de GitHub",
                 "documentation": "Documentación de Proyectos",
-                "download": "Descargar"
+                "download": "Descargar",
+                "view": "Ver",
+                "schemaTable": {
+                    "skills": "Habilidades",
+                    "projects": "Proyectos",
+                    "experience": "Experiencia",
+                    "idPK": "id (PK)",
+                    "name": "nombre",
+                    "category": "categoría",
+                    "proficiency": "competencia",
+                    "yearsExperience": "años_experiencia",
+                    "title": "título",
+                    "description": "descripción",
+                    "imageUrl": "url_imagen",
+                    "githubUrl": "url_github",
+                    "liveUrl": "url_sitio",
+                    "position": "posición",
+                    "company": "empresa",
+                    "startDate": "fecha_inicio",
+                    "endDate": "fecha_fin"
+                },
+                "buttons": {
+                    "downloadResume": "Descargar Currículum",
+                    "viewGithub": "Ver Perfil de GitHub",
+                    "viewDocumentation": "Ver Documentación"
+                }
             },
             "orchestration": {
                 "title": "Orquestación de Datos",
@@ -153,7 +188,8 @@
                 "github": "GitHub",
                 "message": "Enviar Mensaje",
                 "cta": "Conectémonos"
-            }
+            },
+            "nextStage": "Siguiente Etapa: Validación"
         }
     }
 }

@@ -17,7 +17,7 @@ const { description, title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang={i18next.language}>
+<html lang={i18next.language} class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -27,6 +27,15 @@ const { description, title } = Astro.props;
     <title>{title}</title>
     <ViewTransitions />
     <HeadHrefLangs />
+    <script is:inline>
+      // Initialize theme - prefer dark theme by default
+      const theme = localStorage.getItem("theme") || "dark";
+      if (theme === "light") {
+        document.documentElement.classList.remove("dark");
+      } else {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
   </head>
 
   <body class="relative text-black dark:text-white">
@@ -115,5 +124,41 @@ const { description, title } = Astro.props;
         }
       }
     </style>
+    <script is:inline>
+      // Handle mobile menu initialization on each page load
+      document.addEventListener('astro:page-load', function() {
+        const menuToggle = document.getElementById('menu-toggle');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        
+        if (menuToggle && mobileMenu) {
+          menuToggle.addEventListener('click', function() {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('flex');
+            document.body.classList.add('overflow-hidden');
+          });
+        }
+        
+        if (closeMenu && mobileMenu) {
+          closeMenu.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+            document.body.classList.remove('overflow-hidden');
+          });
+        }
+        
+        // Close mobile menu when a link is clicked
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            if (mobileMenu) {
+              mobileMenu.classList.add('hidden');
+              mobileMenu.classList.remove('flex');
+              document.body.classList.remove('overflow-hidden');
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
