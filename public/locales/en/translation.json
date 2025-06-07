@@ -53,7 +53,7 @@
     },
     "hero": {
         "intro": "Hello, my name is Noeury.",
-        "paragraph1": "+5 years of experience. <strong>Systems Engineer, mathematics teacher, and former English teacher</strong> from Barahona, Dominican Republic. Currently dedicated to web application development."
+        "paragraph1": "👋 Hey there! I'm a <strong>Software Developer and Data Engineer</strong> who loves solving problems and building scalable applications. I specialize in data pipelines, ETL processes, and smart software architectures, ensuring smooth workflows and meaningful insights for better decision-making. Always up for a challenge, I enjoy learning, optimizing systems, and creating impactful solutions."
     },
     "projects": {
         "nivelup": {
@@ -115,7 +115,11 @@
                 "technologies": "Technologies Used",
                 "challenges": "Challenges",
                 "solutions": "Solutions",
-                "results": "Results"
+                "results": "Results",
+                "buttons": {
+                    "code": "Code",
+                    "preview": "Preview"
+                }
             },
             "storage": {
                 "title": "Data Storage",

@@ -36,7 +36,7 @@ const socialLinks = [
         07 <Trans i18nKey="pipeline.stages.delivery">Delivery</Trans>
       </span>
       <h2 class="pipeline-section-title mt-2">
-        <span class="pipeline-icon-wrapper inline-block mr-3 bg-red-100 dark:bg-red-900 p-2 rounded-full">
+        <span class="pipeline-icon-wrapper inline-block mr-3 bg-red-100 dark:bg-red-900 p-3 rounded-full w-12 h-12 flex items-center justify-center">
           <span class="text-2xl">🚀</span>
         </span>
         <Trans i18nKey="pipeline.sections.delivery.title">Data Delivery</Trans>
@@ -66,7 +66,7 @@ const socialLinks = [
           <div class="data-packet" style="animation-delay: 2s;"></div>
         </div>
         
-        <form class="contact-form space-y-6 relative z-10">
+        <form class="contact-form space-y-6 relative z-10" id="contactForm">
           <div class="form-group">
             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
               Name
@@ -369,3 +369,114 @@ const socialLinks = [
     }
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton.innerHTML;
+    
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(contactForm);
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+      
+      // Validate form
+      if (!name || !email || !subject || !message) {
+        showNotification('Please fill in all fields', 'error');
+        return;
+      }
+      
+      // Update button state
+      submitButton.disabled = true;
+      submitButton.innerHTML = `
+        <span class="relative z-10 flex items-center justify-center">
+          <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          Sending...
+        </span>
+      `;
+      
+      try {
+        // Create mailto link with form data
+        const mailtoLink = `mailto:noeuryfeliz@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+          `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+        )}`;
+        
+        // Open email client
+        window.location.href = mailtoLink;
+        
+        // Show success message
+        showNotification('Email client opened! Please send the email to complete your message.', 'success');
+        
+        // Reset form after a delay
+        setTimeout(() => {
+          contactForm.reset();
+        }, 1000);
+        
+      } catch (error) {
+        console.error('Error:', error);
+        showNotification('Something went wrong. Please try again or email directly.', 'error');
+      } finally {
+        // Reset button state
+        setTimeout(() => {
+          submitButton.disabled = false;
+          submitButton.innerHTML = originalButtonText;
+        }, 2000);
+      }
+    });
+    
+    // Notification function
+    function showNotification(message, type) {
+      // Remove existing notifications
+      const existingNotifications = document.querySelectorAll('.contact-notification');
+      existingNotifications.forEach(notification => notification.remove());
+      
+      // Create notification
+      const notification = document.createElement('div');
+      notification.className = `contact-notification fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg max-w-sm transition-all duration-300 transform translate-x-full`;
+      
+      if (type === 'success') {
+        notification.className += ' bg-green-500 text-white';
+      } else {
+        notification.className += ' bg-red-500 text-white';
+      }
+      
+      notification.innerHTML = `
+        <div class="flex items-center">
+          <span class="mr-2">${type === 'success' ? '✅' : '❌'}</span>
+          <span>${message}</span>
+          <button class="ml-4 text-white hover:text-gray-200" onclick="this.parentElement.parentElement.remove()">
+            ✕
+          </button>
+        </div>
+      `;
+      
+      document.body.appendChild(notification);
+      
+      // Animate in
+      setTimeout(() => {
+        notification.classList.remove('translate-x-full');
+      }, 100);
+      
+      // Auto remove after 5 seconds
+      setTimeout(() => {
+        if (notification.parentElement) {
+          notification.classList.add('translate-x-full');
+          setTimeout(() => {
+            if (notification.parentElement) {
+              notification.remove();
+            }
+          }, 300);
+        }
+      }, 5000);
+    }
+  });
+</script>

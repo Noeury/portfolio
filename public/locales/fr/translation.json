@@ -53,7 +53,7 @@
     },
     "hero": {
         "intro": "Bonjour, je m'appelle Noeury.",
-        "paragraph1": "+5 ans d'expérience. <strong>Ingénieur en systèmes, professeur de mathématiques et ancien professeur d'anglais</strong> de Barahona, République dominicaine. Actuellement dédié au développement d'applications web."
+        "paragraph1": "👋 Salut ! Je suis un <strong>Développeur de Logiciels et Ingénieur de Données</strong> qui aime résoudre des problèmes et construire des applications évolutives. Je me spécialise dans les pipelines de données, les processus ETL et les architectures logicielles intelligentes, garantissant des flux de travail fluides et des insights significatifs pour une meilleure prise de décision. Toujours prêt pour un défi, j'aime apprendre, optimiser les systèmes et créer des solutions impactantes."
     },
     "projects": {
         "nivelup": {

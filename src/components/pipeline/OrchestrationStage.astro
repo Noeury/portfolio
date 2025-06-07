@@ -19,10 +19,10 @@ const leadershipExperience = [
 
 // Orchestration tools and methodologies
 const orchestrationTools = [
-  { name: "Agile/Scrum", icon: "🔄", level: 90, color: "purple" },
-  { name: "Jira", icon: "📊", level: 85, color: "blue" },
-  { name: "Git/GitHub", icon: "🔀", level: 95, color: "gray" },
-  { name: "CI/CD Pipelines", icon: "⚙️", level: 80, color: "green" },
+  { name: "Agile/Scrum", icon: "🔄" },
+  { name: "Jira", icon: "📊" },
+  { name: "Git/GitHub", icon: "🔀" },
+  { name: "CI/CD Pipelines", icon: "⚙️" },
 ];
 
 // Work methodologies
@@ -52,7 +52,7 @@ const workMethodologies = [
         05 <Trans i18nKey="pipeline.stages.orchestration">Orchestration</Trans>
       </span>
       <h2 class="pipeline-section-title mt-2">
-        <span class="pipeline-icon-wrapper inline-block mr-3 bg-purple-100 dark:bg-purple-900 p-2 rounded-full">
+        <span class="pipeline-icon-wrapper inline-block mr-3 bg-purple-100 dark:bg-purple-900 p-3 rounded-full w-12 h-12 flex items-center justify-center">
           <span class="text-2xl">🔄</span>
         </span>
         <Trans i18nKey="pipeline.sections.orchestration.title">Data Orchestration</Trans>
@@ -162,20 +162,13 @@ const workMethodologies = [
             <Trans i18nKey="pipeline.sections.orchestration.tools">Orchestration Tools</Trans>
           </h3>
           
-          <div class="space-y-4">
+          <div class="grid grid-cols-2 gap-4">
             {orchestrationTools.map((tool) => (
-              <div>
-                <div class="flex items-center mb-1">
-                  <span class="text-xl mr-2">{tool.icon}</span>
-                  <span class="font-medium">{tool.name}</span>
-                  <span class="ml-auto text-sm text-gray-500 dark:text-gray-400">{tool.level}%</span>
+              <div class="group flex flex-col items-center p-4 rounded-lg bg-gray-50 dark:bg-gray-700/50 hover:bg-gradient-to-br hover:from-purple-50 hover:to-blue-50 dark:hover:from-purple-900/20 dark:hover:to-blue-900/20 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                <div class="mb-3 p-3 rounded-full bg-white dark:bg-gray-800 shadow-md group-hover:shadow-lg transition-shadow duration-300">
+                  <span class="text-2xl transition-transform duration-300 group-hover:scale-110">{tool.icon}</span>
                 </div>
-                <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                  <div 
-                    class={`h-2.5 rounded-full bg-${tool.color}-500`}
-                    style={`width: ${tool.level}%`}
-                  ></div>
-                </div>
+                <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300">{tool.name}</span>
               </div>
             ))}
           </div>
