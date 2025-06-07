@@ -1,0 +1,312 @@
+---
+import { Trans } from "astro-i18next/components";
+import { t } from "i18next";
+import GitHub from "../icons/GitHub.astro";
+import Link from "../icons/Link.astro";
+import LinkButton from "../LinkButton.astro";
+
+// Import tech icons
+import Angular from "../icons/Angular.astro";
+import React from "../icons/React.astro";
+import Tailwind from "../icons/Tailwind.astro";
+import Mysql from "../icons/Mysql.astro";
+import Expressjs from "../icons/Expressjs.astro";
+import Nodejs from "../icons/Nodejs.astro";
+import Mongodb from "../icons/Mongodb.astro";
+import Nestjs from "../icons/Nestjs.astro";
+import CSharp from "../icons/Csharp.astro";
+import Prisma from "../icons/Prisma.astro";
+
+// Define project data with transformation details
+const transformationProjects = [
+  {
+    title: "NivelUp",
+    description: t("projects.nivelup.description"),
+    challenge: "Creating a comprehensive student leveling and academic management system with seamless user experience.",
+    solution: "Developed a modular platform with integrated components for student profiles, course management, and academic progress tracking.",
+    result: "A robust system that streamlined the student leveling process and improved academic management efficiency.",
+    link: "https://nivelup.netlify.app/",
+    github: "https://github.com/Noeury",
+    image: "/projects/nivelup.jpeg",
+    technologies: [
+      { name: "React", icon: React },
+      { name: "Tailwind", icon: Tailwind },
+      { name: "Node.js", icon: Nodejs },
+      { name: "Express.js", icon: Expressjs },
+      { name: "MySQL", icon: Mysql }
+    ],
+  },
+  {
+    title: "JEN",
+    description: t("projects.jen.description"),
+    challenge: "Building a comprehensive financial platform that handles transactions, reporting, and credit management securely and efficiently.",
+    solution: "Implemented a microservices architecture with Angular frontend and NestJS backend, utilizing MongoDB for flexible data storage.",
+    result: "A versatile financial platform with extensive features including point of sale, reporting, and payment management capabilities.",
+    link: "https://github.com/Noeury",
+    image: "/projects/jen.png",
+    technologies: [
+      { name: "Angular", icon: Angular },
+      { name: "NestJS", icon: Nestjs },
+      { name: "MongoDB", icon: Mongodb },
+      { name: "C#", icon: CSharp },
+      { name: "Prisma", icon: Prisma },
+      { name: "Node.js", icon: Nodejs },
+      { name: "Tailwind", icon: Tailwind }
+    ],
+  },
+];
+---
+
+<section id="transformation" class="pipeline-section min-h-screen py-24">
+  <div class="container mx-auto">
+    <div class="mb-12">
+      <span class="pipeline-badge bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 text-xs font-medium px-2.5 py-0.5 rounded">
+        03 <Trans i18nKey="pipeline.stages.transformation">Transformation</Trans>
+      </span>
+      <h2 class="pipeline-section-title mt-2">
+        <span class="pipeline-icon-wrapper inline-block mr-3 bg-purple-100 dark:bg-purple-900 p-3 rounded-full w-12 h-12 flex items-center justify-center">
+          <span class="text-2xl">🔄</span>
+        </span>
+        <Trans i18nKey="pipeline.sections.transformation.title">Data Transformation</Trans>
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+        <Trans i18nKey="pipeline.sections.transformation.subtitle">Key Projects</Trans>
+      </p>
+      <p class="text-gray-600 dark:text-gray-400 max-w-3xl">
+        <Trans i18nKey="pipeline.sections.transformation.description">
+          Just as raw data transforms into valuable insights, here's how I've transformed challenges into solutions.
+        </Trans>
+      </p>
+    </div>
+
+    <!-- Transformation Projects (data pipeline style) -->
+    <div class="space-y-24">
+      {transformationProjects.map((project, index) => (
+        <div class="transformation-project">
+          <div class="flex flex-col space-y-12 md:space-y-0 md:flex-row md:space-x-8">
+            <!-- Image Column -->
+            <div class="w-full md:w-2/5">
+              <div class="relative transform-container overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 shadow-lg h-full">
+                <!-- Data transformation animation overlay -->
+                <div class="transform-overlay absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 z-10"></div>
+                
+                <!-- Data points animation -->
+                <div class="data-points absolute inset-0 z-20">
+                  {Array.from({ length: 10 }).map((_, i) => (
+                    <div class="data-point" style={`left: ${Math.random() * 100}%; top: ${Math.random() * 100}%; animation-delay: ${i * 0.2}s;`}></div>
+                  ))}
+                </div>
+                
+                <img
+                  alt={project.title}
+                  class="object-cover w-full h-full transition duration-500"
+                  loading="lazy"
+                  src={project.image}
+                />
+              </div>
+            </div>
+            
+            <!-- Content Column -->
+            <div class="w-full md:w-3/5 transform-data">
+              <!-- Project Title with ETL Indicator -->
+              <div class="flex items-center">
+                <div class="etl-indicator flex items-center space-x-2 mr-4">
+                  <div class="h-2 w-2 bg-red-500 rounded-full"></div>
+                  <div class="h-2 w-2 bg-yellow-500 rounded-full"></div>
+                  <div class="h-2 w-2 bg-green-500 rounded-full"></div>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+                  {project.title}
+                </h3>
+              </div>
+              
+              <!-- Transformation Flow Diagram -->
+              <div class="transformation-flow mt-4 mb-4 flex items-center">
+                <div class="flow-node bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-lg text-sm"><Trans i18nKey="pipeline.sections.transformation.flow.input">Input</Trans></div>
+                <div class="flow-arrow mx-2">→</div>
+                <div class="flow-node bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-3 py-1 rounded-lg text-sm"><Trans i18nKey="pipeline.sections.transformation.flow.transform">Transform</Trans></div>
+                <div class="flow-arrow mx-2">→</div>
+                <div class="flow-node bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-lg text-sm"><Trans i18nKey="pipeline.sections.transformation.flow.output">Output</Trans></div>
+              </div>
+              
+              <!-- Technologies Used -->
+              <div class="mb-4">
+                <h4 class="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                  <Trans i18nKey="pipeline.sections.transformation.technologies">Technologies Used</Trans>
+                </h4>
+                <ul class="flex flex-wrap gap-2">
+                  {project.technologies.map((tech) => (
+                    <li>
+                      <span class="flex items-center gap-1 text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full">
+                        <tech.icon class="size-4" />
+                        {tech.name}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              <!-- Description -->
+              <div class="mt-2 mb-4 text-gray-700 dark:text-gray-300">
+                {project.description}
+              </div>
+              
+              <!-- Transformation Details -->
+              <div class="transformation-details grid grid-cols-1 md:grid-cols-3 gap-4 my-4">
+                <div class="transformation-card">
+                  <h4 class="text-sm font-semibold text-purple-700 dark:text-purple-400 mb-1">
+                    <Trans i18nKey="pipeline.sections.transformation.challenges">Challenges</Trans>
+                  </h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">{project.challenge}</p>
+                </div>
+                
+                <div class="transformation-card">
+                  <h4 class="text-sm font-semibold text-indigo-700 dark:text-indigo-400 mb-1">
+                    <Trans i18nKey="pipeline.sections.transformation.solutions">Solutions</Trans>
+                  </h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">{project.solution}</p>
+                </div>
+                
+                <div class="transformation-card">
+                  <h4 class="text-sm font-semibold text-blue-700 dark:text-blue-400 mb-1">
+                    <Trans i18nKey="pipeline.sections.transformation.results">Results</Trans>
+                  </h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">{project.result}</p>
+                </div>
+              </div>
+              
+              <!-- Links -->
+              <footer class="flex items-center mt-6 gap-x-4">
+                {project.github && (
+                  <LinkButton href={project.github}>
+                    <GitHub class="size-6" />
+                    <Trans i18nKey="pipeline.sections.transformation.buttons.code">Code</Trans>
+                  </LinkButton>
+                )}
+                {project.link && (
+                  <LinkButton href={project.link}>
+                    <Link class="size-4" />
+                    <Trans i18nKey="pipeline.sections.transformation.buttons.preview">Preview</Trans>
+                  </LinkButton>
+                )}
+              </footer>
+            </div>
+          </div>
+          
+          <!-- Data flow connector between projects -->
+          {index < transformationProjects.length - 1 && (
+            <div class="data-flow-connector my-12 mx-auto w-0.5 h-12 bg-gradient-to-b from-purple-500 to-blue-500 relative">
+              <div class="data-flow-dot absolute left-1/2 transform -translate-x-1/2"></div>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <!-- Navigation to next stage -->
+    <div class="mt-16 flex justify-center">
+      <a
+        href="#storage"
+        class="pipeline-next-stage inline-flex items-center px-5 py-3 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none transition-transform hover:translate-y-1"
+      >
+        <span class="mr-2"><Trans i18nKey="pipeline.nextStagePrefix">Next Stage:</Trans></span> <Trans i18nKey="pipeline.sections.storage.title">Storage</Trans>
+        <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .transformation-card {
+    @apply bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm;
+  }
+  
+  .transform-overlay {
+    position: absolute;
+    inset: 0;
+    background-size: 10px 10px;
+    background-image: repeating-linear-gradient(45deg, rgba(127, 91, 207, 0.1) 0, rgba(127, 91, 207, 0.1) 1px, transparent 0, transparent 50%);
+  }
+  
+  .data-points .data-point {
+    @apply absolute w-1.5 h-1.5 bg-purple-500 rounded-full opacity-0;
+    animation: dataPointMove 3s ease-in-out infinite;
+  }
+  
+  @keyframes dataPointMove {
+    0% {
+      opacity: 0;
+      transform: translate(0, 0);
+    }
+    50% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 0;
+      transform: translate(20px, 20px);
+    }
+  }
+  
+  .data-flow-connector {
+    position: relative;
+  }
+  
+  .data-flow-dot {
+    @apply w-2 h-2 bg-blue-500 rounded-full;
+    animation: dataFlow 2s ease-in-out infinite;
+  }
+  
+  @keyframes dataFlow {
+    0% {
+      top: 0;
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      top: 100%;
+      opacity: 0;
+    }
+  }
+  
+  .etl-indicator {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.7;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
+  .pipeline-next-stage {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .pipeline-next-stage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: 0.5s;
+  }
+  
+  .pipeline-next-stage:hover::before {
+    left: 100%;
+  }
+</style>

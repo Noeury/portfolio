@@ -53,7 +53,7 @@
     },
     "hero": {
         "intro": "Bonjour, je m'appelle Noeury.",
-        "paragraph1": "+5 ans d'expérience. <strong>Ingénieur en systèmes, professeur de mathématiques et ancien professeur d'anglais</strong> de Barahona, République dominicaine. Actuellement dédié au développement d'applications web."
+        "paragraph1": "👋 Salut ! Je suis un <strong>Développeur de Logiciels et Ingénieur de Données</strong> qui aime résoudre des problèmes et construire des applications évolutives. Je me spécialise dans les pipelines de données, les processus ETL et les architectures logicielles intelligentes, garantissant des flux de travail fluides et des insights significatifs pour une meilleure prise de décision. Toujours prêt pour un défi, j'aime apprendre, optimiser les systèmes et créer des solutions impactantes."
     },
     "projects": {
         "nivelup": {
@@ -70,5 +70,120 @@
     },
     "component": {
         "ready": "Prêt à Travailler"
+    },
+    "pipeline": {
+        "loading": "Chargement du Pipeline de Données...",
+        "nextStagePrefix": "Étape suivante :",
+        "stages": {
+            "ingestion": "Ingestion",
+            "validation": "Validation",
+            "transformation": "Transformation",
+            "storage": "Stockage",
+            "orchestration": "Orchestration",
+            "monitoring": "Surveillance",
+            "delivery": "Livraison"
+        },
+        "sections": {
+            "ingestion": {
+                "title": "Ingestion de Données",
+                "subtitle": "Introduction",
+                "tagline": "Bienvenue dans mon parcours d'ingénieur de données !",
+                "description": "Tout comme l'ingestion de données est la première étape d'un pipeline, c'est ici que vous faites ma connaissance.",
+                "cta": "Faites défiler pour explorer mon pipeline"
+            },
+            "validation": {
+                "title": "Validation des Données",
+                "subtitle": "Compétences et Outils",
+                "description": "Tout comme les données sont validées pour leur exactitude, voici les compétences professionnelles et outils que j'ai perfectionnés.",
+                "technical_skills": "Compétences Techniques",
+                "tools": "Outils et Technologies",
+                "certifications": "Certifications",
+                "languages": "Langues"
+            },
+            "transformation": {
+                "title": "Transformation des Données",
+                "description": "Tout comme les données brutes se transforment en informations précieuses, voici comment j'ai transformé les défis en solutions.",
+                "subtitle": "Projets Clés",
+                "technologies": "Technologies Utilisées",
+                "challenges": "Défis",
+                "solutions": "Solutions",
+                "results": "Résultats",
+                "flow": {
+                    "input": "Entrée",
+                    "transform": "Transformer",
+                    "output": "Sortie"
+                },
+                "buttons": {
+                    "code": "Code",
+                    "preview": "Aperçu"
+                }
+            },
+            "storage": {
+                "title": "Stockage des Données",
+                "subtitle": "Ressources et Dépôts",
+                "description": "Tout comme on sélectionne la base de données appropriée pour ses données, voici où vous pouvez accéder à mes ressources professionnelles.",
+                "resume": "CV",
+                "resumeDescription": "Mon CV professionnel au format PDF.",
+                "github": "Dépôt GitHub",
+                "githubDescription": "Parcourez mes dépôts de code et projets.",
+                "documentation": "Documentation des Projets",
+                "documentationDescription": "Documentation technique pour des projets sélectionnés.",
+                "schema": "Schéma du Portfolio",
+                "schemaTable": {
+                    "skills": "Compétences",
+                    "projects": "Projets",
+                    "experience": "Expérience",
+                    "idPK": "id (PK)",
+                    "name": "nom",
+                    "category": "catégorie",
+                    "proficiency": "niveau",
+                    "yearsExperience": "années_expérience",
+                    "title": "titre",
+                    "description": "description",
+                    "imageUrl": "url_image",
+                    "githubUrl": "url_github",
+                    "liveUrl": "url_site",
+                    "position": "poste",
+                    "company": "entreprise",
+                    "startDate": "date_début",
+                    "endDate": "date_fin"
+                },
+                "buttons": {
+                    "downloadResume": "Télécharger le CV",
+                    "viewGithub": "Voir le Profil GitHub",
+                    "viewDocumentation": "Voir la Documentation"
+                }
+            },
+            "orchestration": {
+                "title": "Orchestration du Pipeline",
+                "subtitle": "Flux de Travail et Leadership",
+                "description": "Tout comme les pipelines complexes sont orchestrés, j'ai coordonné des équipes et des flux de travail.",
+                "team_leadership": "Leadership d'Équipe",
+                "workflow": "Méthodologies de Travail",
+                "tools": "Outils d'Orchestration",
+                "experience": "Expérience en Leadership"
+            },
+            "monitoring": {
+                "title": "Surveillance du Pipeline",
+                "subtitle": "Métriques et Témoignages",
+                "description": "Tout comme nous surveillons les performances du pipeline, voici des commentaires sur mes contributions professionnelles.",
+                "metrics": "Métriques de Performance",
+                "testimonials": "Témoignages",
+                "activity": "Activité Professionnelle",
+                "feedback": "Retours des Clients"
+            },
+            "delivery": {
+                "title": "Livraison des Données",
+                "subtitle": "Contact et Connexion",
+                "description": "Tout comme les données traitées sont livrées aux utilisateurs, je suis prêt à me connecter et à discuter d'opportunités.",
+                "contact_form": "Formulaire de Contact",
+                "email": "Email",
+                "linkedin": "LinkedIn",
+                "github": "GitHub",
+                "message": "Envoyer un Message",
+                "cta": "Connectons-nous"
+            }
+        },
+        "nextStage": "Étape suivante : Validation"
     }
 }

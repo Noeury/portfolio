@@ -1,0 +1,259 @@
+---
+import { Trans } from "astro-i18next/components";
+import { t } from "i18next";
+import GitHub from "../icons/GitHub.astro";
+import LinkButton from "../LinkButton.astro";
+
+// You can replace these with actual links to your resume and resources
+const resources = [
+  {
+    title: t("pipeline.sections.storage.resume"),
+    icon: "📄",
+    description: t("pipeline.sections.storage.resumeDescription", "My professional resume in PDF format."),
+    link: "#", // Replace with actual resume link
+    buttonText: t("pipeline.sections.storage.buttons.downloadResume", "Download Resume"),
+  },
+  {
+    title: t("pipeline.sections.storage.github"),
+    icon: "💻",
+    description: t("pipeline.sections.storage.githubDescription", "Browse my code repositories and projects."),
+    link: "https://github.com/Noeury",
+    buttonText: t("pipeline.sections.storage.buttons.viewGithub", "View GitHub Profile"),
+  },
+  {
+    title: t("pipeline.sections.storage.documentation"),
+    icon: "📚",
+    description: t("pipeline.sections.storage.documentationDescription", "Technical documentation for selected projects."),
+    link: "#", // Replace with actual documentation link
+    buttonText: t("pipeline.sections.storage.buttons.viewDocumentation", "View Documentation"),
+  },
+];
+---
+
+<section id="storage" class="pipeline-section min-h-screen py-24">
+  <div class="container mx-auto">
+    <div class="mb-12">
+      <span class="pipeline-badge bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded">
+        04 <Trans i18nKey="pipeline.stages.storage">Storage</Trans>
+      </span>
+      <h2 class="pipeline-section-title mt-2">
+        <span class="pipeline-icon-wrapper inline-block mr-3 bg-blue-100 dark:bg-blue-900 p-3 rounded-full w-12 h-12 flex items-center justify-center">
+          <span class="text-2xl">💾</span>
+        </span>
+        <Trans i18nKey="pipeline.sections.storage.title">Data Storage</Trans>
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+        <Trans i18nKey="pipeline.sections.storage.subtitle">Resources & Repositories</Trans>
+      </p>
+      <p class="text-gray-600 dark:text-gray-400 max-w-3xl">
+        <Trans i18nKey="pipeline.sections.storage.description">
+          Like selecting the right database for your data, here's where you can access my professional resources.
+        </Trans>
+      </p>
+    </div>
+
+    <!-- Data storage visualization with database-like containers -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      {resources.map((resource) => (
+        <div class="storage-container relative bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden border border-blue-200 dark:border-blue-900 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+          <!-- Database-style header -->
+          <div class="storage-header bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+              <span class="text-xl mr-2">{resource.icon}</span>
+              <h3 class="font-bold">{resource.title}</h3>
+            </div>
+            <div class="flex space-x-1">
+              <div class="w-2 h-2 rounded-full bg-red-400"></div>
+              <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
+              <div class="w-2 h-2 rounded-full bg-green-400"></div>
+            </div>
+          </div>
+          
+          <!-- Data points animation in the background -->
+          <div class="absolute inset-0 pointer-events-none opacity-10">
+            <div class="data-grid">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <div class="data-row">
+                  {Array.from({ length: 5 }).map((_, j) => (
+                    <div class="data-cell"></div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <!-- Content -->
+          <div class="p-6 z-10 relative">
+            <p class="text-gray-600 dark:text-gray-300 mb-6">{resource.description}</p>
+            
+            <LinkButton href={resource.link} class="storage-button w-full justify-center">
+              <span class="mr-2">{resource.icon}</span>
+              {resource.buttonText}
+            </LinkButton>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Schema Diagram -->
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-blue-200 dark:border-blue-900 mb-16">
+      <h3 class="text-xl font-bold mb-4 text-blue-700 dark:text-blue-400 flex items-center">
+        <span class="mr-2">📊</span>
+        <Trans i18nKey="pipeline.sections.storage.schema">Portfolio Schema</Trans>
+      </h3>
+      
+      <div class="schema-diagram overflow-x-auto">
+        <div class="min-w-[768px] p-4 bg-blue-50 dark:bg-gray-900 rounded-lg">
+          <!-- Schema tables -->
+          <div class="grid grid-cols-3 gap-4">
+            <!-- Skills Table -->
+            <div class="schema-table">
+              <div class="schema-table-header"><Trans i18nKey="pipeline.sections.storage.schemaTable.skills">Skills</Trans></div>
+              <div class="schema-table-row schema-pk"><Trans i18nKey="pipeline.sections.storage.schemaTable.idPK">id (PK)</Trans></div>
+              <div class="schema-table-row"><Trans i18nKey="pipeline.sections.storage.schemaTable.name">name</Trans></div>
+              <div class="schema-table-row"><Trans i18nKey="pipeline.sections.storage.schemaTable.category">category</Trans></div>
+              <div class="schema-table-row"><Trans i18nKey="pipeline.sections.storage.schemaTable.proficiency">proficiency</Trans></div>
+              <div class="schema-table-row"><Trans i18nKey="pipeline.sections.storage.schemaTable.yearsExperience">years_experience</Trans></div>
+            </div>
+            
+            <!-- Projects Table -->
+            <div class="schema-table">
+              <div class="schema-table-header"><Trans i18nKey="pipeline.sections.storage.schemaTable.projects">Projects</Trans></div>
+              <div class="schema-table-row schema-pk"><Trans i18nKey="pipeline.sections.storage.schemaTable.idPK">id (PK)</Trans></div>
+              <div class="schema-table-row"><Trans i18nKey="pipeline.sections.storage.schemaTable.title">title</Trans></div>
+              <div class="schema-table-row"><Trans i18nKey="pipeline.sections.storage.schemaTable.description">description</Trans></div>
+              <div class="schema-table-row"><Trans i18nKey="pipeline.sections.storage.schemaTable.imageUrl">image_url</Trans></div>
+              <div class="schema-table-row"><Trans i18nKey="pipeline.sections.storage.schemaTable.githubUrl">github_url</Trans></div>
+              <div class="schema-table-row"><Trans i18nKey="pipeline.sections.storage.schemaTable.liveUrl">live_url</Trans></div>
+            </div>
+            
+            <!-- Experience Table -->
+            <div class="schema-table">
+              <div class="schema-table-header"><Trans i18nKey="pipeline.sections.storage.schemaTable.experience">Experience</Trans></div>
+              <div class="schema-table-row schema-pk"><Trans i18nKey="pipeline.sections.storage.schemaTable.idPK">id (PK)</Trans></div>
+              <div class="schema-table-row"><Trans i18nKey="pipeline.sections.storage.schemaTable.position">position</Trans></div>
+              <div class="schema-table-row"><Trans i18nKey="pipeline.sections.storage.schemaTable.company">company</Trans></div>
+              <div class="schema-table-row"><Trans i18nKey="pipeline.sections.storage.schemaTable.startDate">start_date</Trans></div>
+              <div class="schema-table-row"><Trans i18nKey="pipeline.sections.storage.schemaTable.endDate">end_date</Trans></div>
+              <div class="schema-table-row"><Trans i18nKey="pipeline.sections.storage.schemaTable.description">description</Trans></div>
+            </div>
+          </div>
+          
+          <!-- Relationship lines -->
+          <div class="schema-relationships">
+            <svg class="w-full h-24 mt-4" viewBox="0 0 800 100">
+              <path d="M200,20 C300,20 300,80 400,80" stroke="#3B82F6" stroke-width="2" fill="none" stroke-dasharray="5,5" />
+              <path d="M400,20 C500,20 500,80 600,80" stroke="#3B82F6" stroke-width="2" fill="none" stroke-dasharray="5,5" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation to next stage -->
+    <div class="mt-16 flex justify-center">
+      <a
+        href="#orchestration"
+        class="pipeline-next-stage inline-flex items-center px-5 py-3 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none transition-transform hover:translate-y-1"
+      >
+        <span class="mr-2"><Trans i18nKey="pipeline.nextStagePrefix">Next Stage:</Trans></span> <Trans i18nKey="pipeline.sections.orchestration.title">Orchestration</Trans>
+        <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .storage-container {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+  
+  .storage-container:hover {
+    transform: translateY(-4px) rotateX(5deg);
+  }
+  
+  .storage-button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  
+  .storage-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: translateX(-100%);
+  }
+  
+  .storage-container:hover .storage-button::after {
+    transform: translateX(100%);
+    transition: 0.5s;
+  }
+  
+  .data-grid {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    gap: 1px;
+    height: 100%;
+  }
+  
+  .data-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+  }
+  
+  .data-cell {
+    background-color: rgba(59, 130, 246, 0.05);
+    border: 1px dashed rgba(59, 130, 246, 0.2);
+  }
+  
+  /* Schema styling */
+  .schema-table {
+    @apply border border-blue-200 dark:border-blue-800 rounded overflow-hidden;
+  }
+  
+  .schema-table-header {
+    @apply bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 font-bold p-2 text-center;
+  }
+  
+  .schema-table-row {
+    @apply border-t border-blue-100 dark:border-blue-900 p-2 text-sm;
+  }
+  
+  .schema-pk {
+    @apply font-bold bg-blue-50 dark:bg-blue-950;
+  }
+  
+  .pipeline-next-stage {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .pipeline-next-stage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: 0.5s;
+  }
+  
+  .pipeline-next-stage:hover::before {
+    left: 100%;
+  }
+</style>

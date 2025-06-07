@@ -1,6 +1,6 @@
 {
-    "title": "Porfolio de noeury - Ingeniero en sistemas",
-    "description": "¡Contacta a Noeury Feliz y comienza una jornada única juntos!",
+    "title": "Porfolio de Noeury - Ingeniero de Datos",
+    "description": "Portfolio de ingeniería de datos de Noeury Feliz - ¡Explora mi trabajo a través de un flujo de pipeline de datos!",
     "instructions": "Checkout the <0>src/pages</0> directory to get started.<1><2>Code Challenge:</2> Translate this page with your language of choice.",
     "header": {
         "experience": {
@@ -30,7 +30,7 @@
     },
     "AboutMe": {
         "paragraph1": "Mi nombre es Noeury Feliz, pero mis amigos me llaman simplemente Noeury. Mi aventura en la programación comenzó a los 15 años mientras estaba en la secundaria. Mi primer lenguaje en ese entonces fue C#. En los últimos años he aprendido diversas tecnologías hasta llegar a <strong>liderar equipos en algunas ocasiones</strong>.",
-        "paragraph2": "Uno de mis logros destacados fue participar en la competencia de innovación del Mescyt, donde presenté proyectos de gran impacto.  ",
+        "paragraph2": "Uno de mis logros destacados fue participar en la competencia de innovación del Mescyt, donde presenté proyectos de gran impacto.",
         "paragraph3": "Actualmente estoy desarrollando algunos proyectos para la Universidad Católica Tecnológica de Barahona <strong>UCATEBA</strong>, donde he desempeñado el rol de SCRUM Master y lider de equipos"
     },
     "expirience": {
@@ -53,7 +53,7 @@
     },
     "hero": {
         "intro": "Hola, mi nombre es Noeury",
-        "paragraph1": " +5 años de experiencia. <strong>Ingeniero En Sistemas, profesor de matematicas y ex profesor de inglés</strong> de Barahona, República Dominicana do. Actualmente me dedico al desarrollo de aplicaciones web."
+        "paragraph1": "👋 ¡Hola! Soy un <strong>Desarrollador de Software e Ingeniero de Datos</strong> que ama resolver problemas y construir aplicaciones escalables. Me especializo en pipelines de datos, procesos ETL y arquitecturas de software inteligentes, asegurando flujos de trabajo fluidos e insights significativos para una mejor toma de decisiones. Siempre dispuesto a un desafío, disfruto aprender, optimizar sistemas y crear soluciones impactantes."
     },
     "projects": {
         "nivelup": {
@@ -70,5 +70,126 @@
     },
     "component": {
         "ready": "Listo para Trabajar"
+    },
+    "pipeline": {
+        "nextStagePrefix": "Siguiente Etapa:",
+        "stages": {
+            "ingestion": "Ingesta",
+            "validation": "Validación",
+            "transformation": "Transformación",
+            "storage": "Almacenamiento",
+            "orchestration": "Orquestación",
+            "monitoring": "Monitoreo",
+            "delivery": "Entrega"
+        },
+        "descriptions": {
+            "ingestion": "Conoce mi trayectoria e introducción.",
+            "validation": "Revisa mis habilidades, herramientas y certificaciones.",
+            "transformation": "Explora mis proyectos clave y cómo transformo desafíos en soluciones.",
+            "storage": "Accede a mis recursos, repositorios y currículum.",
+            "orchestration": "Conoce mis experiencias en gestión de flujos de trabajo y liderazgo de equipos.",
+            "monitoring": "Visualiza métricas y testimonios sobre mi trabajo.",
+            "delivery": "Conéctate conmigo para discutir oportunidades."
+        },
+        "sections": {
+            "ingestion": {
+                "title": "Ingesta de Datos",
+                "subtitle": "Introducción",
+                "tagline": "¡Bienvenido a mi trayectoria en ingeniería de datos!",
+                "description": "Así como la ingesta de datos es el primer paso en un pipeline, aquí es donde me conoces.",
+                "cta": "Desplázate para explorar mi pipeline"
+            },
+            "validation": {
+                "title": "Validación de Datos",
+                "subtitle": "Habilidades y Herramientas",
+                "description": "Como validar datos para garantizar calidad, aquí están las habilidades profesionales y herramientas que he perfeccionado.",
+                "technical_skills": "Habilidades Técnicas",
+                "tools": "Herramientas y Tecnologías",
+                "certifications": "Certificaciones",
+                "languages": "Idiomas"
+            },
+            "transformation": {
+                "title": "Transformación de Datos",
+                "subtitle": "Proyectos Clave",
+                "description": "Así como los datos brutos se transforman en información valiosa, aquí está cómo he transformado desafíos en soluciones.",
+                "technologies": "Tecnologías Utilizadas",
+                "challenges": "Desafíos",
+                "solutions": "Soluciones",
+                "results": "Resultados",
+                "flow": {
+                    "input": "Entrada",
+                    "transform": "Transformar",
+                    "output": "Salida"
+                },
+                "buttons": {
+                    "code": "Código",
+                    "preview": "Vista Previa"
+                }
+            },
+            "storage": {
+                "title": "Almacenamiento de Datos",
+                "subtitle": "Recursos y Repositorios",
+                "description": "Como seleccionar la base de datos adecuada para tus datos, aquí es donde puedes acceder a mis recursos profesionales.",
+                "resume": "Currículum",
+                "github": "Repositorio de GitHub",
+                "documentation": "Documentación de Proyectos",
+                "download": "Descargar",
+                "view": "Ver",
+                "schemaTable": {
+                    "skills": "Habilidades",
+                    "projects": "Proyectos",
+                    "experience": "Experiencia",
+                    "idPK": "id (PK)",
+                    "name": "nombre",
+                    "category": "categoría",
+                    "proficiency": "competencia",
+                    "yearsExperience": "años_experiencia",
+                    "title": "título",
+                    "description": "descripción",
+                    "imageUrl": "url_imagen",
+                    "githubUrl": "url_github",
+                    "liveUrl": "url_sitio",
+                    "position": "posición",
+                    "company": "empresa",
+                    "startDate": "fecha_inicio",
+                    "endDate": "fecha_fin"
+                },
+                "buttons": {
+                    "downloadResume": "Descargar Currículum",
+                    "viewGithub": "Ver Perfil de GitHub",
+                    "viewDocumentation": "Ver Documentación"
+                }
+            },
+            "orchestration": {
+                "title": "Orquestación de Datos",
+                "subtitle": "Flujo de Trabajo y Liderazgo",
+                "description": "Similar a orquestar pipelines complejos, he coordinado equipos y flujos de trabajo.",
+                "team_leadership": "Liderazgo de Equipos",
+                "workflow": "Metodologías de Trabajo",
+                "tools": "Herramientas de Orquestación",
+                "experience": "Experiencia en Liderazgo"
+            },
+            "monitoring": {
+                "title": "Monitoreo de Datos",
+                "subtitle": "Métricas y Testimonios",
+                "description": "Así como monitoreamos el rendimiento del pipeline, aquí hay comentarios sobre mis contribuciones profesionales.",
+                "metrics": "Métricas de Rendimiento",
+                "testimonials": "Testimonios",
+                "activity": "Actividad Profesional",
+                "feedback": "Comentarios de Clientes"
+            },
+            "delivery": {
+                "title": "Entrega de Datos",
+                "subtitle": "Contacto y Conexión",
+                "description": "Como entregar datos procesados a los usuarios, estoy listo para conectarme y discutir oportunidades.",
+                "contact_form": "Formulario de Contacto",
+                "email": "Correo Electrónico",
+                "linkedin": "LinkedIn",
+                "github": "GitHub",
+                "message": "Enviar Mensaje",
+                "cta": "Conectémonos"
+            },
+            "nextStage": "Siguiente Etapa: Validación"
+        }
     }
 }

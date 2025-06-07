@@ -1,6 +1,6 @@
 {
-    "title": "Noeury's Portfolio - Systems Engineer",
-    "description": "Contact Noeury Feliz and start a unique journey together!",
+    "title": "Noeury's Portfolio - Data Engineer",
+    "description": "Data engineering portfolio of Noeury Feliz - Explore my work through a data pipeline flow!",
     "instructions": "Checkout the <0>src/pages</0> directory to get started.<1><2>Code Challenge:</2> Translate this page with your language of choice.",
     "header": {
         "experience": {
@@ -53,7 +53,7 @@
     },
     "hero": {
         "intro": "Hello, my name is Noeury.",
-        "paragraph1": "+5 years of experience. <strong>Systems Engineer, mathematics teacher, and former English teacher</strong> from Barahona, Dominican Republic. Currently dedicated to web application development."
+        "paragraph1": "👋 Hey there! I'm a <strong>Software Developer and Data Engineer</strong> who loves solving problems and building scalable applications. I specialize in data pipelines, ETL processes, and smart software architectures, ensuring smooth workflows and meaningful insights for better decision-making. Always up for a challenge, I enjoy learning, optimizing systems, and creating impactful solutions."
     },
     "projects": {
         "nivelup": {
@@ -70,5 +70,123 @@
     },
     "component": {
         "ready": "Ready to Work"
+    },
+    "pipeline": {
+        "nextStagePrefix": "Next Stage:",
+        "stages": {
+            "ingestion": "Ingestion",
+            "validation": "Validation",
+            "transformation": "Transformation",
+            "storage": "Storage",
+            "orchestration": "Orchestration",
+            "monitoring": "Monitoring",
+            "delivery": "Delivery"
+        },
+        "descriptions": {
+            "ingestion": "Getting to know my background and introduction.",
+            "validation": "Reviewing my skills, tools, and certifications.",
+            "transformation": "Exploring my key projects and how I transform challenges into solutions.",
+            "storage": "Accessing my resources, repositories, and resume.",
+            "orchestration": "Learning about my workflow management and team leadership experiences.",
+            "monitoring": "Viewing metrics and testimonials about my work.",
+            "delivery": "Connecting with me to discuss opportunities."
+        },
+        "sections": {
+            "ingestion": {
+                "title": "Data Ingestion",
+                "subtitle": "Introduction",
+                "tagline": "Welcome to my data engineering journey!",
+                "description": "Just as data ingestion is the first step in a pipeline, here's where you meet me.",
+                "cta": "Scroll to explore my pipeline"
+            },
+            "validation": {
+                "title": "Data Validation",
+                "subtitle": "Skills & Tools",
+                "description": "Like validating data for quality, here are the professional skills and tools I've refined.",
+                "technical_skills": "Technical Skills",
+                "tools": "Tools & Technologies",
+                "certifications": "Certifications",
+                "languages": "Languages"
+            },
+            "transformation": {
+                "title": "Data Transformation",
+                "subtitle": "Key Projects",
+                "description": "Just as raw data transforms into valuable insights, here's how I've transformed challenges into solutions.",
+                "technologies": "Technologies Used",
+                "challenges": "Challenges",
+                "solutions": "Solutions",
+                "results": "Results",
+                "buttons": {
+                    "code": "Code",
+                    "preview": "Preview"
+                }
+            },
+            "storage": {
+                "title": "Data Storage",
+                "subtitle": "Resources & Repositories",
+                "description": "Like selecting the right database for your data, here's where you can access my professional resources.",
+                "resume": "Resume",
+                "resumeDescription": "My professional resume in PDF format.",
+                "github": "GitHub Repository",
+                "githubDescription": "Browse my code repositories and projects.",
+                "documentation": "Project Documentation",
+                "documentationDescription": "Technical documentation for selected projects.",
+                "download": "Download",
+                "schema": "Portfolio Schema",
+                "schemaTable": {
+                    "skills": "Skills",
+                    "projects": "Projects",
+                    "experience": "Experience",
+                    "idPK": "id (PK)",
+                    "name": "name",
+                    "category": "category",
+                    "proficiency": "proficiency",
+                    "yearsExperience": "years_experience",
+                    "title": "title",
+                    "description": "description",
+                    "imageUrl": "image_url",
+                    "githubUrl": "github_url",
+                    "liveUrl": "live_url",
+                    "position": "position",
+                    "company": "company",
+                    "startDate": "start_date",
+                    "endDate": "end_date"
+                },
+                "buttons": {
+                    "downloadResume": "Download Resume",
+                    "viewGithub": "View GitHub Profile",
+                    "viewDocumentation": "View Documentation"
+                }
+            },
+            "orchestration": {
+                "title": "Data Orchestration",
+                "subtitle": "Workflow & Leadership",
+                "description": "Similar to orchestrating complex pipelines, I've coordinated teams and workflows.",
+                "team_leadership": "Team Leadership",
+                "workflow": "Work Methodologies",
+                "tools": "Orchestration Tools",
+                "experience": "Leadership Experience"
+            },
+            "monitoring": {
+                "title": "Data Monitoring",
+                "subtitle": "Metrics & Testimonials",
+                "description": "Just as we monitor pipeline performance, here's feedback on my professional contributions.",
+                "metrics": "Performance Metrics",
+                "testimonials": "Testimonials",
+                "activity": "Professional Activity",
+                "feedback": "Client Feedback"
+            },
+            "delivery": {
+                "title": "Data Delivery",
+                "subtitle": "Contact & Connect",
+                "description": "Like delivering processed data to users, I'm ready to connect and discuss opportunities.",
+                "contact_form": "Contact Form",
+                "email": "Email",
+                "linkedin": "LinkedIn",
+                "github": "GitHub",
+                "message": "Send Message",
+                "cta": "Let's Connect"
+            }
+        }
     }
 }

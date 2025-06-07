@@ -1,0 +1,247 @@
+---
+import { Trans } from "astro-i18next/components";
+import { t } from "i18next";
+
+// Import tech icon components
+import AngularIcon from "../icons/Angular.astro";
+import ReactIcon from "../icons/React.astro";
+import NextJSIcon from "../icons/NextJS.astro";
+import NodejsIcon from "../icons/Nodejs.astro";
+import ExpressjsIcon from "../icons/Expressjs.astro";
+import NestjsIcon from "../icons/Nestjs.astro";
+import MongodbIcon from "../icons/Mongodb.astro";
+import MysqlIcon from "../icons/Mysql.astro";
+import TailwindIcon from "../icons/Tailwind.astro";
+import CsharpIcon from "../icons/Csharp.astro";
+import PrismaIcon from "../icons/Prisma.astro";
+import PythonIcon from "../icons/Python.astro";
+import SQLIcon from "../icons/SQL.astro";
+import RedisIcon from "../icons/Redis.astro";
+import DockerIcon from "../icons/Docker.astro";
+import DBTIcon from "../icons/DBT.astro";
+import PostgreSQLIcon from "../icons/PostgreSQL.astro";
+import DatabricksIcon from "../icons/Databricks.astro";
+import PowerBIIcon from "../icons/PowerBI.astro";
+
+// Define skills and tools with categories
+const skills = [
+  {
+    category: "Data Engineering",
+    items: [
+      { name: "Docker", icon: DockerIcon },
+      { name: "dbt", icon: DBTIcon },
+      { name: "Databricks", icon: DatabricksIcon },
+      { name: "Power BI", icon: PowerBIIcon },
+    ]
+  },
+  {
+    category: "Frontend",
+    items: [
+      { name: "React", icon: ReactIcon },
+      { name: "Angular", icon: AngularIcon },
+      { name: "Next.js", icon: NextJSIcon },
+      { name: "Tailwind CSS", icon: TailwindIcon },
+    ]
+  },
+  {
+    category: "Backend",
+    items: [
+      { name: "Python", icon: PythonIcon },
+      { name: "Node.js", icon: NodejsIcon },
+      { name: "Express.js", icon: ExpressjsIcon },
+      { name: "NestJS", icon: NestjsIcon },
+      { name: "C#", icon: CsharpIcon },
+    ]
+  },
+  {
+    category: "Database",
+    items: [
+      { name: "SQL", icon: SQLIcon },
+      { name: "PostgreSQL", icon: PostgreSQLIcon },
+      { name: "Redis", icon: RedisIcon },
+      { name: "MongoDB", icon: MongodbIcon },
+      { name: "MySQL", icon: MysqlIcon },
+      { name: "Prisma ORM", icon: PrismaIcon },
+    ]
+  }
+];
+
+// Define certifications - can be updated with actual certifications
+const certifications = [
+  {
+    name: "SCRUM Master",
+    issuer: "UCATEBA",
+    year: "2023",
+    icon: "🏆"
+  },
+  {
+    name: "C# .NET Advanced",
+    issuer: "ITLA",
+    year: "2024",
+    icon: "🎯"
+  },
+  {
+    name: "Python",
+    issuer: "ITLA",
+    year: "2024",
+    icon: "🐍"
+  },
+  {
+    name: "Mobile Development with Flutter",
+    issuer: "ITLA",
+    year: "2024",
+    icon: "📱"
+  },
+  {
+    name: "Angular",
+    issuer: "ITLA",
+    year: "2024",
+    icon: "🅰️"
+  },
+];
+
+// Define languages
+const languages = [
+  { name: "Spanish", level: "Native" },
+  { name: "English", level: "Professional" },
+];
+---
+
+<section id="validation" class="pipeline-section min-h-screen py-24">
+  <div class="container mx-auto">
+    <div class="mb-12">
+      <span class="pipeline-badge bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-medium px-2.5 py-0.5 rounded">
+        02 <Trans i18nKey="pipeline.stages.validation">Validation</Trans>
+      </span>
+      <h2 class="pipeline-section-title mt-2">
+        <span class="pipeline-icon-wrapper inline-block mr-3 bg-green-100 dark:bg-green-900 p-3 rounded-full w-12 h-12 flex items-center justify-center">
+          <span class="text-2xl">✓</span>
+        </span>
+        <Trans i18nKey="pipeline.sections.validation.title">Data Validation</Trans>
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+        <Trans i18nKey="pipeline.sections.validation.subtitle">Skills & Tools</Trans>
+      </p>
+      <p class="text-gray-600 dark:text-gray-400 max-w-3xl">
+        <Trans i18nKey="pipeline.sections.validation.description">
+          Like validating data for quality, here are the professional skills and tools I've refined.
+        </Trans>
+      </p>
+    </div>
+
+    <!-- Skills visualization with pipeline-style gauge bars -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+      {skills.map((skillCategory) => (
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-green-200 dark:from-green-900 opacity-20 rounded-bl-full"></div>
+          
+          <h3 class="text-xl font-bold mb-4 text-green-700 dark:text-green-400 flex items-center">
+            {skillCategory.category === "Data Engineering" && <span class="mr-2">📊</span>}
+            {skillCategory.category === "Frontend" && <span class="mr-2">🖥️</span>}
+            {skillCategory.category === "Backend" && <span class="mr-2">⚙️</span>}
+            {skillCategory.category === "Database" && <span class="mr-2">💾</span>}
+            {skillCategory.category}
+          </h3>
+          
+          <div class="grid grid-cols-2 gap-4">
+            {skillCategory.items.map((skill) => (
+              <div class="group flex flex-col items-center p-4 rounded-lg bg-gray-50 dark:bg-gray-700/50 hover:bg-gradient-to-br hover:from-green-50 hover:to-blue-50 dark:hover:from-green-900/20 dark:hover:to-blue-900/20 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                <div class="mb-3 p-3 rounded-full bg-white dark:bg-gray-800 shadow-md group-hover:shadow-lg transition-shadow duration-300">
+                  <skill.icon class="size-8 transition-transform duration-300 group-hover:scale-110" />
+                </div>
+                <span class="font-medium text-sm text-center text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300">{skill.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Certifications and Languages in a grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Certifications -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700">
+        <h3 class="text-xl font-bold mb-4 text-green-700 dark:text-green-400 flex items-center">
+          <span class="mr-2">🏆</span>
+          <Trans i18nKey="pipeline.sections.validation.certifications">Certifications</Trans>
+        </h3>
+        
+        <div class="grid grid-cols-1 gap-3">
+          {certifications.map((cert) => (
+            <div class="group flex items-center p-3 rounded-lg bg-gray-50 dark:bg-gray-700/50 hover:bg-gradient-to-r hover:from-green-50 hover:to-blue-50 dark:hover:from-green-900/20 dark:hover:to-blue-900/20 transition-all duration-300 hover:scale-105 hover:shadow-md">
+              <div class="mr-3 p-2 rounded-full bg-white dark:bg-gray-800 shadow-sm group-hover:shadow-md transition-shadow duration-300">
+                <span class="text-lg">{cert.icon}</span>
+              </div>
+              <div class="flex-1">
+                <p class="font-medium text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300">{cert.name}</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300">{cert.issuer} • {cert.year}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Languages -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700">
+        <h3 class="text-xl font-bold mb-4 text-green-700 dark:text-green-400 flex items-center">
+          <span class="mr-2">🌐</span>
+          <Trans i18nKey="pipeline.sections.validation.languages">Languages</Trans>
+        </h3>
+        
+        <div class="grid grid-cols-1 gap-3">
+          {languages.map((language) => (
+            <div class="group flex items-center p-3 rounded-lg bg-gray-50 dark:bg-gray-700/50 hover:bg-gradient-to-r hover:from-green-50 hover:to-blue-50 dark:hover:from-green-900/20 dark:hover:to-blue-900/20 transition-all duration-300 hover:scale-105 hover:shadow-md">
+              <div class="mr-3 p-2 rounded-full bg-white dark:bg-gray-800 shadow-sm group-hover:shadow-md transition-shadow duration-300">
+                <span class="text-lg">🌐</span>
+              </div>
+              <div class="flex-1">
+                <span class="font-medium text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300">{language.name}</span>
+                <span class="ml-2 text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300">({language.level})</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation to next stage -->
+    <div class="mt-12 flex justify-center">
+      <a
+        href="#transformation"
+        class="pipeline-next-stage inline-flex items-center px-5 py-3 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none transition-transform hover:translate-y-1"
+      >
+        <span class="mr-2"><Trans i18nKey="pipeline.nextStagePrefix">Next Stage:</Trans></span> <Trans i18nKey="pipeline.stages.transformation">Transformation</Trans>
+        <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pipeline-next-stage {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .pipeline-next-stage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: 0.5s;
+  }
+  
+  .pipeline-next-stage:hover::before {
+    left: 100%;
+  }
+</style>

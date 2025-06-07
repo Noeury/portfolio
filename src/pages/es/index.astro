@@ -1,60 +1,107 @@
 ---
-import AboutMe from "@/components/AboutMe.astro";
-import Experience from "@/components/Experience.astro";
-import Hero from "@/components/Hero.astro";
-import Briefcase from "@/components/icons/Briefcase.astro";
-import CodeIcon from "@/components/icons/Code.astro";
-import ProfileCheck from "@/components/icons/ProfileCheck.astro";
-import Projects from "@/components/Projects.astro";
-import SectionContainer from "@/components/SectionContainer.astro";
-import Layout from "@/layouts/Layout.astro";
-import { Trans } from "astro-i18next/components";
+import PipelineLayout from "@/layouts/PipelineLayout.astro";
 import { changeLanguage, t } from "i18next";
+
+// Import pipeline stage components
+import IngestionStage from "@/components/pipeline/IngestionStage.astro";
+import ValidationStage from "@/components/pipeline/ValidationStage.astro";
+import TransformationStage from "@/components/pipeline/TransformationStage.astro";
+import StorageStage from "@/components/pipeline/StorageStage.astro";
+import OrchestrationStage from "@/components/pipeline/OrchestrationStage.astro";
+import MonitoringStage from "@/components/pipeline/MonitoringStage.astro";
+import DeliveryStage from "@/components/pipeline/DeliveryStage.astro";
 
 changeLanguage("es");
 ---
 
-<Layout title={t("title")} description={t("description")}>
-  <main class="px-4">
-    <SectionContainer class="py-16 md:py-36">
-      <Hero />
-    </SectionContainer>
+<PipelineLayout title={t("title")} description={t("description")}>
+  <main class="pipeline-main">
+    <!-- Pipeline loading animation for initial page load -->
+    <div class="pipeline-loader fixed inset-0 z-50 bg-white dark:bg-gray-950 flex flex-col items-center justify-center" id="pipelineLoader">
+      <div class="loader-text text-2xl font-bold mb-6 text-blue-600 dark:text-blue-400">
+        Cargando Pipeline de Datos...
+      </div>
+      <div class="loader-bar w-64 h-2 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
+        <div class="loader-progress h-full bg-gradient-to-r from-blue-500 to-purple-600" style="width: 0%"></div>
+      </div>
+    </div>
+    
+    <!-- Pipeline stages -->
+    <IngestionStage />
+    <ValidationStage />
+    <TransformationStage />
+    <StorageStage />
+    <OrchestrationStage />
+    <MonitoringStage />
+    <DeliveryStage />
   </main>
-  <div class="space-y-24">
-    <SectionContainer id="experiencia">
-      <h2
-        class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
-      >
-        <Briefcase class="size-8" />
-        <Trans i18nKey="index.experience"> Experiencia laboral</Trans>
-      </h2>
-      <Experience />
-    </SectionContainer>
+</PipelineLayout>
 
-    <SectionContainer id="proyectos">
-      <h2
-        class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
-      >
-        <CodeIcon class="size-7" />
-        <Trans i18nKey="index.title">Proyectos</Trans>
-      </h2>
-      <Projects />
-    </SectionContainer>
+<script>
+  // Animate the pipeline loader on initial page load
+  document.addEventListener('astro:page-load', () => {
+    const loader = document.getElementById('pipelineLoader');
+    const progress = loader?.querySelector('.loader-progress');
+    
+    if (loader && progress) {
+      // Animate the progress bar
+      let width = 0;
+      const interval = setInterval(() => {
+        if (width >= 100) {
+          clearInterval(interval);
+          // Fade out and remove the loader
+          loader.style.opacity = '0';
+          setTimeout(() => {
+            loader.style.display = 'none';
+          }, 500);
+        } else {
+          width += 5;
+          progress.style.width = width + '%';
+        }
+      }, 100);
+    }
+  });
 
-    <SectionContainer id="sobre-mi">
-      <h2
-        class="flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white"
-      >
-        <ProfileCheck class="size-8" />
-        <Trans i18nKey="index.about"> Sobre mí </Trans>
-      </h2>
-      <AboutMe />
-    </SectionContainer>
-  </div>
-  <a
-    href="mailto:noeuryfeliz@gmail.com"
-    title="Contact Me"
-    class="fixed z-90 bottom-10 right-8 bg-blue-600 w-16 h-16 rounded-full drop-shadow-lg flex justify-center items-center text-white text-4xl hover:bg-blue-700 hover:drop-shadow-2xl"
-    >&#9993;</a
-  >
-</Layout>
+  // Add scroll animations for pipeline sections
+  document.addEventListener('astro:after-swap', () => {
+    // Set up intersection observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('pipeline-section-visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    // Observe all pipeline sections
+    document.querySelectorAll('.pipeline-section').forEach(section => {
+      observer.observe(section);
+    });
+  });
+</script>
+
+<style>
+  .pipeline-main {
+    position: relative;
+  }
+  
+  .pipeline-loader {
+    transition: opacity 0.5s ease;
+  }
+  
+  .loader-progress {
+    transition: width 0.1s linear;
+  }
+  
+  /* Add animation for pipeline sections */
+  .pipeline-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .pipeline-section-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
