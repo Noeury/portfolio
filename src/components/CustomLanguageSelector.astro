@@ -1,52 +1,130 @@
 ---
-import { getLangIcon } from "@/Scripts/GetLanguageIcon";
 import i18next from "i18next";
 import ISO6991 from "iso-639-1";
 import { localizePath } from "../../node_modules/astro-i18next";
 
-interface languageMapping {
-    [localeCode: string]: string;
-}
-
-export interface Props extends astroHTML.JSX.SelectHTMLAttributes {
-    showFlag?: boolean;
-    languageMapping?: languageMapping;
-}
-
 const supportedLanguages = i18next.languages;
 const currentLanguage = i18next.language;
-
 const { pathname } = Astro.url;
 
-const { showFlag = false, languageMapping, ...attributes } = Astro.props;
+const flags: Record<string, string> = { en: "🇺🇸", es: "🇪🇸", fr: "🇫🇷" };
+const shortCodes: Record<string, string> = { en: "EN", es: "ES", fr: "FR" };
+
+const langOptions = supportedLanguages.map((lang: string) => ({
+  code: lang,
+  flag: flags[lang] ?? "🌐",
+  short: shortCodes[lang] ?? lang.toUpperCase(),
+  native: ISO6991.getNativeName(lang) || lang,
+  href: localizePath(pathname, lang),
+  active: lang === currentLanguage,
+}));
 ---
 
-<select onchange="location = this.value;" {...attributes}>
-    {
-        supportedLanguages.map((supportedLanguage: string) => {
-            let value = localizePath(pathname, supportedLanguage);
-            const flag = showFlag ? getLangIcon(supportedLanguage) + " " : "";
-            console.log(getLangIcon(supportedLanguage));
-            let nativeName = "";
-            if (
-                languageMapping &&
-                languageMapping.hasOwnProperty(supportedLanguage)
-            ) {
-                nativeName = languageMapping[supportedLanguage];
-            } else {
-                nativeName = ISO6991.getNativeName(supportedLanguage);
-            }
+<lang-toggle class="relative block">
+  <button
+    data-lang-btn
+    aria-haspopup="listbox"
+    aria-expanded="false"
+    aria-label="Select language"
+    class="group flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-gray-200/80 dark:border-gray-700/60 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-sm hover:shadow-md hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-200 text-gray-600 dark:text-gray-300"
+  >
+    {langOptions.filter(l => l.active).map(l => (
+      <span class="flex items-center gap-1.5">
+        <span class="text-base leading-none" aria-hidden="true">{l.flag}</span>
+        <span class="text-xs font-semibold tracking-wide hidden sm:block">{l.short}</span>
+      </span>
+    ))}
+    <svg data-lang-chevron class="size-3 opacity-50 group-hover:opacity-80 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
 
-            const label = nativeName;
+  <div
+    data-lang-menu
+    role="listbox"
+    aria-label="Available languages"
+    class="hidden absolute top-[calc(100%+8px)] right-0 min-w-[10rem] rounded-xl border border-gray-100/80 dark:border-gray-700/50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-xl shadow-black/10 dark:shadow-black/40 z-50 overflow-hidden p-1 origin-top-right transition-all duration-200 opacity-0 scale-95"
+  >
+    {langOptions.map(({ flag, native, short, href, active }) => (
+      <a
+        href={href}
+        role="option"
+        aria-selected={active ? "true" : "false"}
+        class:list={[
+          "flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors duration-150 cursor-pointer no-underline",
+          active
+            ? "bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium"
+            : "text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800/60"
+        ]}
+      >
+        <span class="text-base leading-none" aria-hidden="true">{flag}</span>
+        <span class="flex-1">{native}</span>
+        <span class="text-[10px] font-bold opacity-50 tracking-wider">{short}</span>
+        {active && (
+          <svg class="size-3.5 text-blue-500 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        )}
+      </a>
+    ))}
+  </div>
+</lang-toggle>
 
-            return (
-                <option
-                    value={value}
-                    selected={supportedLanguage === currentLanguage}
-                >
-                    {label}
-                </option>
-            );
-        })
+<script>
+  class LangToggle extends HTMLElement {
+    constructor() {
+      super();
+
+      const btn  = this.querySelector<HTMLElement>("[data-lang-btn]")!;
+      const menu = this.querySelector<HTMLElement>("[data-lang-menu]")!;
+      const chev = this.querySelector<HTMLElement>("[data-lang-chevron]");
+      
+      let isOpen = false;
+
+      const open = () => {
+        isOpen = true;
+        menu.classList.remove("hidden");
+        // tiny delay to allow display:block to render before transitioning opacity/scale
+        requestAnimationFrame(() => {
+          menu.classList.remove("opacity-0", "scale-95");
+          menu.classList.add("opacity-100", "scale-100");
+        });
+        btn.setAttribute("aria-expanded", "true");
+        if (chev) chev.style.transform = "rotate(180deg)";
+      };
+
+      const close = () => {
+        isOpen = false;
+        menu.classList.remove("opacity-100", "scale-100");
+        menu.classList.add("opacity-0", "scale-95");
+        // wait for transition to finish before hiding
+        setTimeout(() => {
+          if (!isOpen) menu.classList.add("hidden");
+        }, 200);
+        
+        btn.setAttribute("aria-expanded", "false");
+        if (chev) chev.style.transform = "";
+      };
+
+      btn.addEventListener("click", e => {
+        e.stopPropagation();
+        isOpen ? close() : open();
+      });
+
+      // Global click listener to close when clicking outside
+      document.addEventListener("click", e => {
+        if (isOpen && !this.contains(e.target as Node)) close();
+      });
+
+      // Global keydown listener
+      document.addEventListener("keydown", e => {
+        if (e.key === "Escape" && isOpen) { 
+          close(); 
+          btn.focus(); 
+        }
+      });
     }
-</select>
+  }
+
+  customElements.define("lang-toggle", LangToggle);
+</script>

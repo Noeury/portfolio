@@ -1,3 +1,5 @@
 allowBuilds:
   esbuild: false
   sharp: false
+patchedDependencies:
+  astro-i18next: patches/astro-i18next.patch

@@ -1,0 +1,10 @@
+diff --git a/src/index.ts b/src/index.ts
+index 782d5bf05d052715c99ac4274ff33e1612a8957a..844951df547594a6ca8b021e53a977d8a8505a9c 100644
+--- a/src/index.ts
++++ b/src/index.ts
+@@ -182,4 +182,4 @@ export {
+   localizeUrl,
+ } from "./utils";
+ 
+-export { AstroI18nextConfig, AstroI18nextOptions } from "./types";
++export type { AstroI18nextConfig, AstroI18nextOptions } from "./types";

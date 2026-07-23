@@ -2,86 +2,34 @@
 import GitHub from "./icons/GitHub.astro";
 import NextJS from "./icons/NextJS.astro";
 import React from "./icons/React.astro";
-
 import Angular from "./icons/Angular.astro";
 import MySQL from "./icons/Mysql.astro";
-
 import Express from "./icons/Expressjs.astro";
-
 import CSharp from "./icons/Csharp.astro";
 import Electron from "./icons/Electron.astro";
 import Mongo from "./icons/Mongodb.astro";
 import Nest from "./icons/Nestjs.astro";
 import Nodejs from "./icons/Nodejs.astro";
 import Prisma from "./icons/Prisma.astro";
-
 import Link from "./icons/Link.astro";
 import Tailwind from "./icons/Tailwind.astro";
-import LinkButton from "./LinkButton.astro";
 import { changeLanguage, t } from "i18next";
 
 const TAGS = {
-  NEXT: {
-    name: "Next.js",
-    class: "bg-black text-white",
-    icon: NextJS,
-  },
-  TAILWIND: {
-    name: "Tailwind",
-    class: "bg-[#003159] text-white",
-    icon: Tailwind,
-  },
-  REACT: {
-    name: "React",
-    class: "bg-[#003159] text-white",
-    icon: React,
-  },
-  ANGULAR: {
-    name: "Angular",
-    class: "bg-[#003159] text-white",
-    icon: Angular,
-  },
-  NODEJS: {
-    name: "NodeJs",
-    class: "bg-[#003159] text-white",
-    icon: Nodejs,
-  },
-  MYSQL: {
-    name: "MySQL",
-    class: "bg-[#003159] text-white",
-    icon: MySQL,
-  },
-  EXPRESS: {
-    name: "ExpressJS",
-    class: "bg-[#003159] text-white",
-    icon: Express,
-  },
-  MONGO: {
-    name: "MongoDB",
-    class: "bg-[#003159] text-white",
-    icon: Mongo,
-  },
-  NEST: {
-    name: "NestJs",
-    class: "bg-[#003159] text-white",
-    icon: Nest,
-  },
-  CSharp: {
-    name: "CSharp",
-    class: "bg-[#003159] text-white",
-    icon: CSharp,
-  },
-  ELECTRON: {
-    name: "Electrni",
-    class: "bg-[#003159] text-white",
-    icon: Electron,
-  },
-  PRISMA: {
-    name: "Prisma",
-    class: "bg-[#003159] text-white",
-    icon: Prisma,
-  },
+  NEXT:     { name: "Next.js",   class: "bg-neutral-900 text-white ring-neutral-700",          icon: NextJS    },
+  TAILWIND: { name: "Tailwind",  class: "bg-sky-950 text-sky-200 ring-sky-800",                icon: Tailwind  },
+  REACT:    { name: "React",     class: "bg-cyan-950 text-cyan-200 ring-cyan-800",              icon: React     },
+  ANGULAR:  { name: "Angular",   class: "bg-red-950 text-red-200 ring-red-800",                icon: Angular   },
+  NODEJS:   { name: "Node.js",   class: "bg-green-950 text-green-200 ring-green-800",          icon: Nodejs    },
+  MYSQL:    { name: "MySQL",     class: "bg-blue-950 text-blue-200 ring-blue-800",             icon: MySQL     },
+  EXPRESS:  { name: "Express",   class: "bg-gray-900 text-gray-200 ring-gray-700",             icon: Express   },
+  MONGO:    { name: "MongoDB",   class: "bg-emerald-950 text-emerald-200 ring-emerald-800",    icon: Mongo     },
+  NEST:     { name: "NestJS",    class: "bg-rose-950 text-rose-200 ring-rose-800",             icon: Nest      },
+  CSharp:   { name: "C#",        class: "bg-purple-950 text-purple-200 ring-purple-800",       icon: CSharp    },
+  ELECTRON: { name: "Electron",  class: "bg-teal-950 text-teal-200 ring-teal-800",             icon: Electron  },
+  PRISMA:   { name: "Prisma",    class: "bg-slate-900 text-slate-200 ring-slate-700",          icon: Prisma    },
 };
+
 const PROJECTS = [
   {
     title: "NivelUp",
@@ -90,79 +38,98 @@ const PROJECTS = [
     github: "https://github.com/Noeury",
     image: "/projects/nivelup.jpeg",
     tags: [TAGS.REACT, TAGS.TAILWIND, TAGS.NODEJS, TAGS.EXPRESS, TAGS.MYSQL],
+    gradient: "from-cyan-500/20 via-blue-500/10 to-purple-500/20",
   },
   {
     title: "JEN",
     description: t("projects.jen.description"),
     link: "https://github.com/Noeury",
     image: "/projects/jen.png",
-    tags: [
-      TAGS.ANGULAR,
-      TAGS.NEST,
-      TAGS.MONGO,
-      TAGS.CSharp,
-      TAGS.PRISMA,
-      TAGS.NODEJS,
-      TAGS.TAILWIND,
-    ],
+    tags: [TAGS.ANGULAR, TAGS.NEST, TAGS.MONGO, TAGS.CSharp, TAGS.PRISMA, TAGS.NODEJS, TAGS.TAILWIND],
+    gradient: "from-rose-500/20 via-orange-500/10 to-amber-500/20",
   },
 ];
 ---
 
-<div class="flex flex-col gap-y-16">
-  {
-    PROJECTS.map(({ image, title, description, tags, link, github }) => (
-      <article class="flex flex-col gap-8 group md:flex-row md:items-center">
-        <div class="w-full md:w-1/2">
-          <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+<div class="flex flex-col gap-20">
+  {PROJECTS.map(({ image, title, description, tags, link, github, gradient }, i) => (
+    <article class="group relative flex flex-col gap-8 md:flex-row md:items-center md:gap-10">
+
+      <!-- Image panel -->
+      <div class="w-full md:w-1/2 flex-shrink-0">
+        <div class={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${gradient} p-px shadow-2xl transition-all duration-500 md:group-hover:-translate-y-1 md:group-hover:shadow-blue-500/20`}>
+          <!-- Inner card with border shimmer -->
+          <div class="relative overflow-hidden rounded-[15px] bg-gray-950">
+            <!-- Shimmer overlay on hover -->
+            <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
             <img
               alt={`Screenshot of ${title} project`}
-              class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+              class="block w-full h-56 sm:h-64 object-cover object-top transition-transform duration-700 group-hover:scale-105"
               loading="lazy"
               decoding="async"
               src={image}
             />
           </div>
         </div>
+      </div>
 
-        <div class="w-full md:w-1/2 md:max-w-lg">
-          <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+      <!-- Content panel -->
+      <div class="w-full md:w-1/2 flex flex-col gap-4">
+        <!-- Project number + title -->
+        <div>
+          <span class="text-xs font-mono font-bold tracking-widest text-blue-500/70 dark:text-blue-400/60 uppercase">
+            {String(i + 1).padStart(2, "0")} — Project
+          </span>
+          <h3 class="mt-1 text-2xl font-bold text-gray-900 dark:text-white tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
             {title}
           </h3>
-          <div class="flex flex-wrap mt-2">
-            <ul class="flex flex-wrap mb-2 gap-x-2 sm:flex-row">
-              {tags.map((tag) => (
-                <li class="mb-2">
-                  <span
-                    class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
-                  >
-                    <tag.icon class="size-4" />
-                    {tag.name}
-                  </span>
-                </li>
-              ))}
-            </ul>
-
-            <div class="mt-2 text-gray-700 dark:text-gray-400">
-              {description}
-            </div>
-            <footer class="flex items-end justify-start mt-4 gap-x-4">
-              {github && (
-                <LinkButton href={github}>
-                  <GitHub class="size-6" />
-                  Code
-                </LinkButton>
-              )}
-              {link && (
-                <LinkButton href={link}>
-                  <Link class="size-4" />
-                  Preview
-                </LinkButton>
-              )}
-            </footer>
-          </div>
         </div>
-      </article>
-    ))
-  }
+
+        <!-- Description card -->
+        <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300 bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm border border-gray-100 dark:border-gray-800 rounded-xl px-4 py-3">
+          {description}
+        </p>
+
+        <!-- Tech tags -->
+        <ul class="flex flex-wrap gap-2" aria-label={`Technologies used in ${title}`}>
+          {tags.map(tag => (
+            <li>
+              <span class={`inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full ring-1 ${tag.class} transition-transform duration-150 hover:scale-105`}>
+                <tag.icon class="size-3.5 flex-shrink-0" aria-hidden="true" />
+                {tag.name}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+        <!-- Action buttons -->
+        <div class="flex items-center gap-3 pt-1">
+          {github && (
+            <a
+              href={github}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-gray-900 dark:bg-gray-800 text-white border border-gray-700 hover:border-gray-500 hover:bg-gray-800 dark:hover:bg-gray-700 transition-all duration-200 shadow-sm hover:shadow-md group/btn"
+              aria-label={`View ${title} source code on GitHub`}
+            >
+              <GitHub class="size-4 transition-transform duration-200 group-hover/btn:-rotate-12" aria-hidden="true" />
+              <span>Source</span>
+            </a>
+          )}
+          {link && (
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-blue-600 hover:bg-blue-500 text-white border border-blue-500 hover:border-blue-400 transition-all duration-200 shadow-sm hover:shadow-lg hover:shadow-blue-500/25 group/btn"
+              aria-label={`View live demo of ${title}`}
+            >
+              <Link class="size-3.5 transition-transform duration-200 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" aria-hidden="true" />
+              <span>Live Demo</span>
+            </a>
+          )}
+        </div>
+      </div>
+    </article>
+  ))}
 </div>
