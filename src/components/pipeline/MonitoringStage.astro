@@ -88,7 +88,7 @@ const githubActivity = [
         06 <Trans i18nKey="pipeline.stages.monitoring">Monitoring</Trans>
       </span>
       <h2 class="pipeline-section-title mt-2">
-        <span class="pipeline-icon-wrapper inline-block mr-3 bg-green-100 dark:bg-green-900 p-3 rounded-full w-12 h-12 flex items-center justify-center">
+        <span class="pipeline-icon-wrapper inline-flex items-center justify-center mr-3 bg-green-100 dark:bg-green-900 p-3 rounded-full size-12">
           <span class="text-2xl">📊</span>
         </span>
         <Trans i18nKey="pipeline.sections.monitoring.title">Data Monitoring</Trans>
@@ -205,10 +205,14 @@ const githubActivity = [
               <p class="text-gray-600 dark:text-gray-300 mb-6 relative z-10">"{testimonial.content}"</p>
               
               <div class="flex items-center">
-                <img 
-                  src={testimonial.avatar} 
-                  alt={testimonial.name} 
+                <img
+                  src={testimonial.avatar}
+                  alt={testimonial.name}
                   class="w-10 h-10 rounded-full mr-4 border-2 border-green-200 dark:border-green-900"
+                  width="40"
+                  height="40"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div>
                   <h4 class="font-bold">{testimonial.name}</h4>

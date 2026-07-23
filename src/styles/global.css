@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+/* =========================================================
+   THEME TOKENS — Tailwind v4 @theme
+   ========================================================= */
+@theme {
+  /* Custom animations */
+  --animate-spin-slow: spin 8s linear infinite;
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-data-flow: dataflow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-bounce-gentle: bounce 3s infinite;
+  --animate-fade-in: fadeIn 0.6s ease forwards;
+  --animate-slide-up: slideUp 0.6s ease forwards;
+
+  /* Custom keyframes */
+  @keyframes dataflow {
+    0%, 100% {
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+    50% {
+      transform: translateY(10px);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Pipeline stage colors */
+  --color-pipeline-ingestion-light: #DBEAFE;
+  --color-pipeline-ingestion-dark: #1E3A8A;
+  --color-pipeline-validation-light: #DCFCE7;
+  --color-pipeline-validation-dark: #14532D;
+  --color-pipeline-transformation-light: #F3E8FF;
+  --color-pipeline-transformation-dark: #581C87;
+  --color-pipeline-storage-light: #DBEAFE;
+  --color-pipeline-storage-dark: #1E3A8A;
+  --color-pipeline-orchestration-light: #F3E8FF;
+  --color-pipeline-orchestration-dark: #581C87;
+  --color-pipeline-monitoring-light: #DCFCE7;
+  --color-pipeline-monitoring-dark: #14532D;
+  --color-pipeline-delivery-light: #FEE2E2;
+  --color-pipeline-delivery-dark: #7F1D1D;
+
+  /* Custom background images */
+  --background-image-gradient-pipeline: linear-gradient(to right, var(--tw-gradient-stops));
+  --background-image-data-grid:
+    linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+
+  /* Custom background sizes */
+  --background-size-data-grid: 20px 20px;
+}
+
+/* =========================================================
+   BASE STYLES
+   ========================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Improve font rendering */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent layout shift from scrollbar */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* =========================================================
+   ACCESSIBILITY — Skip to content link
+   ========================================================= */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background: #2563eb;
+  color: #fff;
+  border-radius: 0 0 0.5rem 0.5rem;
+  font-weight: 600;
+  transition: top 0.2s;
+}
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* =========================================================
+   FOCUS VISIBLE — consistent across browsers
+   ========================================================= */
+:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}

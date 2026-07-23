@@ -36,7 +36,7 @@ const socialLinks = [
         07 <Trans i18nKey="pipeline.stages.delivery">Delivery</Trans>
       </span>
       <h2 class="pipeline-section-title mt-2">
-        <span class="pipeline-icon-wrapper inline-block mr-3 bg-red-100 dark:bg-red-900 p-3 rounded-full w-12 h-12 flex items-center justify-center">
+        <span class="pipeline-icon-wrapper inline-flex items-center justify-center mr-3 bg-red-100 dark:bg-red-900 p-3 rounded-full size-12">
           <span class="text-2xl">🚀</span>
         </span>
         <Trans i18nKey="pipeline.sections.delivery.title">Data Delivery</Trans>
@@ -372,19 +372,18 @@ const socialLinks = [
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contactForm');
-    const submitButton = contactForm.querySelector('button[type="submit"]');
-    const originalButtonText = submitButton.innerHTML;
+    const contactForm = document.getElementById('contactForm') as HTMLFormElement | null;
+    const submitButton = contactForm?.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+    const originalButtonText = submitButton?.innerHTML ?? '';
     
-    contactForm.addEventListener('submit', async function(e) {
+    contactForm?.addEventListener('submit', async function(e) {
       e.preventDefault();
       
       // Get form data
-      const formData = new FormData(contactForm);
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const subject = document.getElementById('subject').value;
-      const message = document.getElementById('message').value;
+      const name = (document.getElementById('name') as HTMLInputElement | null)?.value ?? '';
+      const email = (document.getElementById('email') as HTMLInputElement | null)?.value ?? '';
+      const subject = (document.getElementById('subject') as HTMLInputElement | null)?.value ?? '';
+      const message = (document.getElementById('message') as HTMLTextAreaElement | null)?.value ?? '';
       
       // Validate form
       if (!name || !email || !subject || !message) {
@@ -393,16 +392,18 @@ const socialLinks = [
       }
       
       // Update button state
-      submitButton.disabled = true;
-      submitButton.innerHTML = `
-        <span class="relative z-10 flex items-center justify-center">
-          <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-          </svg>
-          Sending...
-        </span>
-      `;
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.innerHTML = `
+          <span class="relative z-10 flex items-center justify-center">
+            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Sending...
+          </span>
+        `;
+      }
       
       try {
         // Create mailto link with form data
@@ -418,7 +419,7 @@ const socialLinks = [
         
         // Reset form after a delay
         setTimeout(() => {
-          contactForm.reset();
+          contactForm?.reset();
         }, 1000);
         
       } catch (error) {
@@ -427,14 +428,16 @@ const socialLinks = [
       } finally {
         // Reset button state
         setTimeout(() => {
-          submitButton.disabled = false;
-          submitButton.innerHTML = originalButtonText;
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonText;
+          }
         }, 2000);
       }
     });
     
     // Notification function
-    function showNotification(message, type) {
+    function showNotification(message: string, type: string) {
       // Remove existing notifications
       const existingNotifications = document.querySelectorAll('.contact-notification');
       existingNotifications.forEach(notification => notification.remove());

@@ -17,7 +17,7 @@ changeLanguage("en");
 <PipelineLayout title={t("title")} description={t("description")}>
   <main class="pipeline-main">
     <!-- Pipeline loading animation for initial page load -->
-    <div class="pipeline-loader fixed inset-0 z-50 bg-white dark:bg-gray-950 flex flex-col items-center justify-center" id="pipelineLoader">
+    <div class="pipeline-loader fixed inset-0 z-50 bg-white dark:bg-gray-950 flex flex-col items-center justify-center" id="pipelineLoader" aria-hidden="true">
       <div class="loader-text text-2xl font-bold mb-6 text-blue-600 dark:text-blue-400">
         Loading Data Pipeline...
       </div>
@@ -38,45 +38,54 @@ changeLanguage("en");
 </PipelineLayout>
 
 <script>
-  // Animate the pipeline loader on initial page load
-  document.addEventListener('astro:page-load', () => {
+  function setupLoader() {
+    // Skip loader entirely for users who prefer reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const loader = document.getElementById('pipelineLoader');
-    const progress = loader?.querySelector('.loader-progress');
-    
-    if (loader && progress) {
-      // Animate the progress bar
-      let width = 0;
-      const interval = setInterval(() => {
-        if (width >= 100) {
-          clearInterval(interval);
-          // Fade out and remove the loader
-          loader.style.opacity = '0';
-          setTimeout(() => {
-            loader.style.display = 'none';
-          }, 500);
-        } else {
-          width += 5;
-          progress.style.width = width + '%';
-        }
-      }, 100);
-    }
-  });
+    if (!loader) return;
 
-  // Add scroll animations for pipeline sections
-  document.addEventListener('astro:after-swap', () => {
-    // Set up intersection observer for scroll animations
+    if (prefersReducedMotion) {
+      loader.style.display = 'none';
+      return;
+    }
+
+    const progress = loader.querySelector('.loader-progress') as HTMLElement | null;
+    if (!progress) return;
+
+    // ~500ms total: 10 steps × 50ms, 10% per step
+    let width = 0;
+    const interval = setInterval(() => {
+      width += 10;
+      progress.style.width = width + '%';
+      if (width >= 100) {
+        clearInterval(interval);
+        loader.style.transition = 'opacity 0.3s ease';
+        loader.style.opacity = '0';
+        setTimeout(() => { loader.style.display = 'none'; }, 300);
+      }
+    }, 50);
+  }
+
+  function setupScrollObserver() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('pipeline-section-visible');
+          // Unobserve after reveal — no need to keep watching
+          observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-    // Observe all pipeline sections
     document.querySelectorAll('.pipeline-section').forEach(section => {
       observer.observe(section);
     });
+  }
+
+  // Run on initial page load
+  document.addEventListener('astro:page-load', () => {
+    setupLoader();
+    setupScrollObserver();
   });
 </script>
 
@@ -84,24 +93,12 @@ changeLanguage("en");
   .pipeline-main {
     position: relative;
   }
-  
+
   .pipeline-loader {
-    transition: opacity 0.5s ease;
+    transition: opacity 0.3s ease;
   }
-  
+
   .loader-progress {
-    transition: width 0.1s linear;
-  }
-  
-  /* Add animation for pipeline sections */
-  .pipeline-section {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  
-  .pipeline-section-visible {
-    opacity: 1;
-    transform: translateY(0);
+    transition: width 0.05s linear;
   }
 </style>

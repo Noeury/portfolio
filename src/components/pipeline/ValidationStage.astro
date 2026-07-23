@@ -114,7 +114,7 @@ const languages = [
         02 <Trans i18nKey="pipeline.stages.validation">Validation</Trans>
       </span>
       <h2 class="pipeline-section-title mt-2">
-        <span class="pipeline-icon-wrapper inline-block mr-3 bg-green-100 dark:bg-green-900 p-3 rounded-full w-12 h-12 flex items-center justify-center">
+        <span class="pipeline-icon-wrapper inline-flex items-center justify-center mr-3 bg-green-100 dark:bg-green-900 p-3 rounded-full size-12">
           <span class="text-2xl">✓</span>
         </span>
         <Trans i18nKey="pipeline.sections.validation.title">Data Validation</Trans>
@@ -220,6 +220,7 @@ const languages = [
 </section>
 
 <style>
+  @reference "../../styles/global.css";
   .pipeline-next-stage {
     position: relative;
     overflow: hidden;

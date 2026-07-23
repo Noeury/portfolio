@@ -64,7 +64,7 @@ const transformationProjects = [
         03 <Trans i18nKey="pipeline.stages.transformation">Transformation</Trans>
       </span>
       <h2 class="pipeline-section-title mt-2">
-        <span class="pipeline-icon-wrapper inline-block mr-3 bg-purple-100 dark:bg-purple-900 p-3 rounded-full w-12 h-12 flex items-center justify-center">
+        <span class="pipeline-icon-wrapper inline-flex items-center justify-center mr-3 bg-purple-100 dark:bg-purple-900 p-3 rounded-full size-12">
           <span class="text-2xl">🔄</span>
         </span>
         <Trans i18nKey="pipeline.sections.transformation.title">Data Transformation</Trans>
@@ -83,7 +83,7 @@ const transformationProjects = [
     <div class="space-y-24">
       {transformationProjects.map((project, index) => (
         <div class="transformation-project">
-          <div class="flex flex-col space-y-12 md:space-y-0 md:flex-row md:space-x-8">
+          <div class="flex flex-col gap-12 md:flex-row md:gap-8">
             <!-- Image Column -->
             <div class="w-full md:w-2/5">
               <div class="relative transform-container overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 shadow-lg h-full">
@@ -219,6 +219,7 @@ const transformationProjects = [
 </section>
 
 <style>
+  @reference "../../styles/global.css";
   .transformation-card {
     @apply bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm;
   }

@@ -15,7 +15,7 @@ const personalImageAlt = "Noeury Feliz";
         01 <Trans i18nKey="pipeline.stages.ingestion">Ingestion</Trans>
       </span>
       <h1 class="pipeline-section-title mt-2">
-        <span class="pipeline-icon-wrapper inline-block mr-3 bg-blue-100 dark:bg-blue-900 p-3 rounded-full w-12 h-12 flex items-center justify-center">
+        <span class="pipeline-icon-wrapper inline-flex items-center justify-center mr-3 bg-blue-100 dark:bg-blue-900 p-3 rounded-full size-12">
           <span class="text-2xl">📥</span>
         </span>
         <Trans i18nKey="pipeline.sections.ingestion.title">Data Ingestion</Trans>
@@ -90,6 +90,10 @@ const personalImageAlt = "Noeury Feliz";
               class="relative rounded-full shadow-2xl size-64 object-cover border-4 border-white dark:border-gray-800"
               src="/Me.jpg"
               alt={personalImageAlt}
+              width="256"
+              height="256"
+              fetchpriority="high"
+              decoding="async"
             />
             
             <!-- Data points flowing around the image -->
@@ -115,6 +119,7 @@ const personalImageAlt = "Noeury Feliz";
 </section>
 
 <style>
+  @reference "../../styles/global.css";
   .animate-spin-slow {
     animation: spin 8s linear infinite;
   }
